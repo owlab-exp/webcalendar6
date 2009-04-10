@@ -6,13 +6,12 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 /**
  * The client side stub for the RPC service.
  */
-@RemoteServiceRelativePath("login")
-public interface LoginService extends RemoteService {
+@RemoteServiceRelativePath("event_remover")
+public interface EventRemoveService extends RemoteService {
 	/**
 	 * 
-	 * @param userid	: user ID
-	 * @param password	: password
+	 * @param userid	: event ID
 	 * @return			: success or failure with reason message
 	 */
-	String loginServer(String userid, String password);
+	String removeEvent(String eventId, String userId);
 }
