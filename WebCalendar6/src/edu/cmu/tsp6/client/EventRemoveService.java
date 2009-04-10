@@ -8,10 +8,11 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("event_remover")
 public interface EventRemoveService extends RemoteService {
+	
 	/**
-	 * 
-	 * @param userid	: event ID
-	 * @return			: success or failure with reason message
+	 * @param eventId	: event ID 
+	 * @param userId	: user ID to know if the user is the owner of the event
+	 * @throws Exception: to notify if any error
 	 */
-	String removeEvent(String eventId, String userId);
+	void removeEvent(String eventId, String userId) throws Exception;
 }

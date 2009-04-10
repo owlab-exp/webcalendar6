@@ -8,11 +8,12 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("login")
 public interface LoginService extends RemoteService {
+
 	/**
 	 * 
-	 * @param userid	: user ID
-	 * @param password	: password
-	 * @return			: success or failure with reason message
+	 * @param userid	: 
+	 * @param password	: 
+	 * @throws Exception: to notify failure situation
 	 */
-	String loginServer(String userid, String password);
+	public void loginServer(String userid, String password) throws Exception;
 }
