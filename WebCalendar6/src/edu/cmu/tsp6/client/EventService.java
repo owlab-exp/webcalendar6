@@ -25,4 +25,24 @@ public interface EventService extends RemoteService {
 	 * @return
 	 */
 	User getUser(String userName);
+	
+	/**
+	 * Updates the event information if the user is the owner of the event
+	 * @param event
+	 * @throws Exception
+	 */
+	void updateEvent(Event event) throws Exception;
+	
+	/**
+	 * Shows the updated event information
+	 * @param eventID : event ID
+	 * @throws Exception
+	 */
+	void showUpdatedEvent(String eventID) throws Exception;
+	
+	
+	
+	
+	
+	
 }
