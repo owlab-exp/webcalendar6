@@ -1,7 +1,7 @@
-package edu.cmu.tsp6.client;
+package edu.cmu.tsp6.businessObjects;
 
-import java.util.Calendar;
 import java.util.Date;
+
 
 /** 
  * This class represents a birthday event. Birthdays
@@ -14,9 +14,8 @@ import java.util.Date;
 public class BirthdayEvent extends Event {
 	/** Date of birth */
 	private Date birthdate;
-	
+	User birthdayPerson;
 	/** The birthday's person */
-	private String birthdayPerson;
 
 	public Date getBirthdate() {
 		return birthdate;
@@ -26,11 +25,11 @@ public class BirthdayEvent extends Event {
 		this.birthdate = birthdate;
 	}
 
-	public String getBirthdayPerson() {
+	public User getBirthdayPerson() {
 		return birthdayPerson;
 	}
 
-	public void setBirthdayPerson(String birthdayPerson) {
+	public void setBirthdayPerson(User birthdayPerson) {
 		this.birthdayPerson = birthdayPerson;
 	}
 	

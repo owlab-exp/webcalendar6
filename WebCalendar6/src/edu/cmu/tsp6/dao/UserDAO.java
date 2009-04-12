@@ -1,9 +1,11 @@
-package edu.cmu.tsp6.client;
+package edu.cmu.tsp6.dao;
 
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import edu.cmu.tsp6.businessObjects.User;
 
 /**
  * [Temporal for other classes]
@@ -15,7 +17,7 @@ public class UserDAO {
 	/**	
 	 * Insert new user information into user table
 	 */
-	public int create(UserInfo user) throws SQLException {
+	public int create(User user) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -48,7 +50,7 @@ public class UserDAO {
 	 * * Update the registered user profile.	
 	 * 
 	 */
-	public int updateUser(UserInfo user) throws SQLException {
+	public int updateUser(User user) throws SQLException {
 		return 0;
 		// 	
 	}

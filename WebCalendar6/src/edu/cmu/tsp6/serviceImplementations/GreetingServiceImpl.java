@@ -1,7 +1,8 @@
-package edu.cmu.tsp6.server;
+package edu.cmu.tsp6.serviceImplementations;
+
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import edu.cmu.tsp6.client.GreetingService;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
  * The server side implementation of the RPC service.
@@ -16,4 +17,5 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		return "Hello, " + input + "!<br><br>I am running " + serverInfo
 				+ ".<br><br>It looks like you are using:<br>" + userAgent;
 	}
+	
 }

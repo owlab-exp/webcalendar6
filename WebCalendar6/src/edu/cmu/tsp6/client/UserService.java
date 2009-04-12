@@ -2,6 +2,9 @@ package edu.cmu.tsp6.client;
 
 import java.sql.SQLException;
 
+import edu.cmu.tsp6.businessObjects.User;
+import edu.cmu.tsp6.dao.UserDAO;
+
 
 // -- Remove for SQLExceptions
 // -- Implement remote service

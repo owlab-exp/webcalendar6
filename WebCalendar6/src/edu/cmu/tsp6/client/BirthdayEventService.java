@@ -5,6 +5,9 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 
+import edu.cmu.tsp6.businessObjects.BirthdayEvent;
+import edu.cmu.tsp6.businessObjects.MonthEnum;
+
 /**
  * This service provides information about birthday events
  * 
@@ -32,5 +35,5 @@ public interface BirthdayEventService extends RemoteService {
 	 * @param month The month of interest
 	 * @return birthday events for people who have birthdat in that month
 	 */
-	public List<BirthdayEvent> getBirthdayEventsInMonth(int month);
+	public List<BirthdayEvent> getBirthdayEventsInMonth(MonthEnum month);
 }
