@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="nash.sample.hibernate.domain.Person" table="SAMPLE_PERSON">
+		<id name="id" column="PER_ID">
+			<!-- generator class="native" /-->
+		</id>
+		<property name="firstName" column="PER_FIRST_NAME" />
+		<property name="lastName" column="PER_LAST_NAME" />
+		<property name="birthDate" column="PER_BIRTH_DATE" />
+		<property name="weightInKilograms" column="PER_WEIGHT_KG" />
+		<property name="heightInMeters" column="PER_HEIGHT_M" />
+	</class>
+</hibernate-mapping>
