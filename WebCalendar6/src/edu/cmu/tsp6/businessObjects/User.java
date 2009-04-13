@@ -73,8 +73,5 @@ public class User {
 		} else {
 			return false;
 		}
-/* This is the better.
-                return getPassword().equals(inputPassword);
-*/
 	}
 }
