@@ -12,18 +12,7 @@ import java.util.Date;
  *
  */
 public class BirthdayEvent extends Event {
-	/** Date of birth */
-	private Date birthdate;
 	User birthdayPerson;
-	/** The birthday's person */
-
-	public Date getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
-	}
 
 	public User getBirthdayPerson() {
 		return birthdayPerson;

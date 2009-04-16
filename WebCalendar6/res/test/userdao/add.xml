@@ -1,5 +1,5 @@
 <dataset>
-    <USER USER_ID="abin" USER_NAME="Abin" USER_EMAIL="ashahab@andrew.cmu.edu" USER_REMIND_DAYS="1" USER_PASSWORD="password"/>  
-    <USER USER_ID="non" USER_NAME="Varokas" USER_EMAIL="varokas@cmu.edu" USER_REMIND_DAYS="2" USER_PASSWORD="password"/>
-    <USER USER_ID="spark" USER_NAME="Sung-wook Park" USER_EMAIL="spark@gmail.com" USER_REMIND_DAYS="4" USER_PASSWORD="password"/>  
+    <EVENT EVENT_ID="1" EVENT_TYPE="birthday" EVENT_OWNER_ID="non" EVENT_BIRTH_PERSON_ID="abin" EVENT_DATE="2009-05-25"/>
+    <EVENT EVENT_ID="2" EVENT_TYPE="birthday" EVENT_OWNER_ID="non" EVENT_BIRTH_PERSON_ID="spark" EVENT_DATE="2009-06-01"/> 
+    <EVENT EVENT_TYPE="birthday" EVENT_OWNER_ID="spark" EVENT_BIRTH_PERSON_ID="non" EVENT_DATE="1984-01-25"/> 
 </dataset>

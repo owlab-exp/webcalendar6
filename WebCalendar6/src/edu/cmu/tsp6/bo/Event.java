@@ -5,13 +5,14 @@ import java.util.Date;
 public class Event {
 	User owner;
 	Date date;
-	Long eventId;
-//	public String getName() {
-//		return name;
-//	}
-//	public void setName(String name) {
-//		this.name = name;
-//	}
+	int eventId;
+
+	public int getEventId() {
+		return eventId;
+	}
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
+	}
 	public User getOwner() {
 		return owner;
 	}
