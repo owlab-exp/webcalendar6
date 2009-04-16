@@ -1,7 +1,8 @@
 package edu.cmu.tsp6.client;
 
 import com.google.gwt.user.client.rpc.RemoteService;
-import edu.cmu.tsp6.businessObjects.User;
+
+import edu.cmu.tsp6.bo.User;
 
 public interface RegistryService extends RemoteService  {
 	 	 

@@ -1,4 +1,4 @@
-package edu.cmu.tsp6.businessObjects;
+package edu.cmu.tsp6.bo;
 /**
  * This class represent user information
  * in the web calendar system.
@@ -7,14 +7,19 @@ package edu.cmu.tsp6.businessObjects;
  *
  */
 public class User {
-	private String userId = null;
-	private String password = null;
-	private String name = null; // -- Full name
-	private String email = null;
+	private String userId;
+	private String password;
+	private String name;
+	private String email;
+	private int remindDays;
 	
-	// -- days prior to send notification
 	
-	
+	public int getRemindDays() {
+		return remindDays;
+	}
+	public void setRemindDays(int remindDays) {
+		this.remindDays = remindDays;
+	}
 	public String getEmail() {
 		/**
 		 * retrieve e-mail data for user
@@ -64,14 +69,4 @@ public class User {
 		userId = string;
 	} 
 	
-	/**	 
-	 * Operation to check match the password for requested Id.	
-	 */
-	public boolean isMatchPassword(String inputPassword) {
-		if (getPassword().equals(inputPassword)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 }

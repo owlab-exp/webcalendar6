@@ -7,7 +7,7 @@ package edu.cmu.tsp6.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.cmu.tsp6.businessObjects.User;
+import edu.cmu.tsp6.bo.User;
 
 public class NotificationService {
 	
