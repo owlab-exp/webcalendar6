@@ -14,6 +14,14 @@ public class User {
 	private int remindDays;
 	
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof User)) {
+			return false;
+		}
+		User other = (User)obj;
+		return this.userId.equals(other.userId);
+	}
 	public int getRemindDays() {
 		return remindDays;
 	}
