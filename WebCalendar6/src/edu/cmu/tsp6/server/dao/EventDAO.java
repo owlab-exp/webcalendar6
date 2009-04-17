@@ -170,6 +170,39 @@ public class EventDAO {
 	}
 
 	/**
+	 * Get the event information from the given id
+	 * 
+	 * @param eventId
+	 * @throws EventNotExistException
+	 *             If the given event id does not exist in the system
+	 * @return Null if no such event exist
+	 */
+	public BirthdayEvent getEventByOwner(String owner) throws EventNotExistException {
+		
+		String sql = String.format("SELECT * FROM EVENT WHERE EVENT_OWNER_ID='" + owner+ "'");
+
+		try {
+			ResultSet rs = DatabaseConnection.getInstance().getStatement()
+					.executeQuery(sql);
+			rs.next();
+
+			BirthdayEvent event = new BirthdayEvent();
+			event.setEventId(rs.getInt("EVENT_ID"));
+			event.setOwner(UserDAO.getInstance().getUser(
+					rs.getString("EVENT_OWNER_ID")));
+			event.setBirthdayPerson(UserDAO.getInstance().getUser(
+					rs.getString("EVENT_BIRTH_PERSON_ID")));
+			event.setDate(rs.getDate("EVENT_DATE"));
+
+			return event;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
 	 * Get Information of all events in the system in the given range, inclusive
 	 * 
 	 * @param startDay

@@ -6,9 +6,9 @@ import edu.cmu.tsp6.bo.Event;
 import edu.cmu.tsp6.bo.User;
 
 public interface EventService extends RemoteService {
+	
 	/**
-	 * Adds an event. The event must have an associated user, a date, and indicate whether it
-	 * is a surprise.
+	 * Adds an event. The event must have an associated user, a date
 	 * @param event 
 	 */
 	void addEvent(Event event);
