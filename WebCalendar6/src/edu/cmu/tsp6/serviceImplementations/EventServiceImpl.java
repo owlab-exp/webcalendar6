@@ -99,4 +99,10 @@ public class EventServiceImpl extends RemoteServiceServlet implements EventServi
 
 	}
 
+	@Override
+	public User getCurrentUser() {
+		User u = (User) this.getThreadLocalRequest().getSession().getAttribute(WebCalendarConstants.USER);
+		return u;
+	}
+
 }

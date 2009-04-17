@@ -262,7 +262,7 @@ public class EventDAO {
 	}
 
 	public boolean exitsEventByBirthdayPerson(User birthdayPerson) {
-		String sql = String.format("SELECT * FROM EVENT where EVENT_BIRTHDAY_PERSON_ID = '%s'",
+		String sql = String.format("SELECT * FROM EVENT where EVENT_BIRTH_PERSON_ID = '%s'",
 				birthdayPerson.getUserId());
 		Statement s = DatabaseConnection.getInstance().getStatement();
 

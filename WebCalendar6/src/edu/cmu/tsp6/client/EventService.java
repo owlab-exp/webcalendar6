@@ -26,6 +26,7 @@ public interface EventService extends RemoteService {
 	 */
 	User getUser(String userName);
 	
+	User getCurrentUser();
 	/**
 	 * Updates the event information if the user is the owner of the event
 	 * @param event
