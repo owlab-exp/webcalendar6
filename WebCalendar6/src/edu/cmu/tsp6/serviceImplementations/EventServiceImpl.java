@@ -41,15 +41,24 @@ public class EventServiceImpl extends RemoteServiceServlet implements EventServi
 		if (!(event instanceof BirthdayEvent)) {
 			throw new UnsupportedOperationException("only birthday events are supported");
 		}
+		BirthdayEvent be = (BirthdayEvent)event;
 		//validate if all the fields are present
-		if (event.getDate() == null) {
+		if (be.getDate() == null) {
 			throw new NullPointerException("Event date should not be null");
 		}
-		if (event.getOwner() == null) {
+		if (be.getOwner() == null) {
 			throw new NullPointerException("Event ownder should not be null");
 		}
-		// save it using the EventDAO
+		if (be.getBirthdayPerson() == null) {
+			throw new NullPointerException("Birthday person should not be null");
+		}
 		EventDAO ev = EventDAO.getInstance();
+		//validate if event with same birthday person
+		if (ev.exitsEventByBirthdayPerson(be.getBirthdayPerson())) {
+			throw new IllegalStateException("Birthday person already has a birthday");
+		}
+		// save it using the EventDAO
+		
 		ev.addEvent((BirthdayEvent)event);
 		//test it
 	}

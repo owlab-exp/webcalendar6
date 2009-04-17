@@ -260,4 +260,19 @@ public class EventDAO {
 			return null;
 		}
 	}
+
+	public boolean exitsEventByBirthdayPerson(User birthdayPerson) {
+		String sql = String.format("SELECT * FROM EVENT where EVENT_BIRTHDAY_PERSON_ID = '%s'",
+				birthdayPerson.getUserId());
+		Statement s = DatabaseConnection.getInstance().getStatement();
+
+		try {
+			s.execute(sql);
+			return (s.getResultSet().next());
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
 }
