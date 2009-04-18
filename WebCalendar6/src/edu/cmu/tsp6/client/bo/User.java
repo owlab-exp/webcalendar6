@@ -1,4 +1,4 @@
-package edu.cmu.tsp6.bo;
+package edu.cmu.tsp6.client.bo;
 /**
  * This class represent user information
  * in the web calendar system.

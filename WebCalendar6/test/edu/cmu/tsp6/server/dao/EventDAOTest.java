@@ -24,9 +24,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import edu.cmu.tsp6.bo.BirthdayEvent;
-import edu.cmu.tsp6.bo.Event;
-import edu.cmu.tsp6.bo.User;
+import edu.cmu.tsp6.client.bo.BirthdayEvent;
+import edu.cmu.tsp6.client.bo.Event;
+import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.server.dao.exception.EventExistException;
 import edu.cmu.tsp6.server.dao.exception.EventNotExistException;
 import edu.cmu.tsp6.server.dao.exception.UserExistException;

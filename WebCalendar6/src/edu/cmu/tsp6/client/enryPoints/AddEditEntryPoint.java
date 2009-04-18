@@ -16,10 +16,10 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-import edu.cmu.tsp6.bo.BirthdayEvent;
-import edu.cmu.tsp6.bo.User;
 import edu.cmu.tsp6.client.EventService;
 import edu.cmu.tsp6.client.EventServiceAsync;
+import edu.cmu.tsp6.client.bo.BirthdayEvent;
+import edu.cmu.tsp6.client.bo.User;
 
 public class AddEditEntryPoint implements EntryPoint {
 	private VerticalPanel mainPanel = new VerticalPanel();

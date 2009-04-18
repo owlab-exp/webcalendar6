@@ -9,15 +9,13 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import edu.cmu.tsp6.bo.BirthdayEvent;
-import edu.cmu.tsp6.bo.Event;
-import edu.cmu.tsp6.bo.User;
+import edu.cmu.tsp6.client.bo.BirthdayEvent;
+import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.server.dao.exception.EventExistException;
 import edu.cmu.tsp6.server.dao.exception.EventNotExistException;
-import edu.cmu.tsp6.server.dao.exception.UserExistException;
 import edu.cmu.tsp6.server.dao.exception.UserNotExistException;
 
-public class EventDAO {
+public class EventDAO implements IEventDAO {
 	private static EventDAO instance;
 
 	private EventDAO() {

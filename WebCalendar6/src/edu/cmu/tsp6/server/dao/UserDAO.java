@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.cmu.tsp6.bo.User;
+import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.server.dao.exception.UserExistException;
 import edu.cmu.tsp6.server.dao.exception.UserNotExistException;
 

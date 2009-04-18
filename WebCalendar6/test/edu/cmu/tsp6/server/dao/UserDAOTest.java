@@ -18,7 +18,7 @@ import org.dbunit.operation.DatabaseOperation;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import edu.cmu.tsp6.bo.User;
+import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.server.dao.exception.UserExistException;
 import edu.cmu.tsp6.server.dao.exception.UserNotExistException;
 

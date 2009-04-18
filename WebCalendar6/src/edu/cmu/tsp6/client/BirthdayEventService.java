@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 
-import edu.cmu.tsp6.bo.BirthdayEvent;
-import edu.cmu.tsp6.bo.MonthEnum;
+import edu.cmu.tsp6.client.bo.BirthdayEvent;
+import edu.cmu.tsp6.client.bo.MonthEnum;
 
 /**
  * This service provides information about birthday events

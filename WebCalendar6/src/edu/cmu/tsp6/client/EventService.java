@@ -2,8 +2,8 @@ package edu.cmu.tsp6.client;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 
-import edu.cmu.tsp6.bo.Event;
-import edu.cmu.tsp6.bo.User;
+import edu.cmu.tsp6.client.bo.Event;
+import edu.cmu.tsp6.client.bo.User;
 
 public interface EventService extends RemoteService {
 	

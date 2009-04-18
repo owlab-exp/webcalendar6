@@ -1,4 +1,4 @@
-package edu.cmu.tsp6.bo;
+package edu.cmu.tsp6.client.bo;
 
 import java.util.Date;
 
