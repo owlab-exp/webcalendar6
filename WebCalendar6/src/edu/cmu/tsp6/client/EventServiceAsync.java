@@ -27,5 +27,26 @@ public interface EventServiceAsync {
 	 */
 	void removeEvent(String eventId, String userId, AsyncCallback<Void> callback) throws Exception;
 	
+	/**
+	 * Gets the user's information by username
+	 * @param userName
+	 * @return
+	 */
+	void getUser(String userName, AsyncCallback<User> callback);
+	
+	/**
+	 * Updates the event information if the user is the owner of the event
+	 * @param event
+	 * @throws Exception
+	 */
+	void updateEvent(Event event, AsyncCallback<Void> callback) throws Exception;
+	
+	/**
+	 * Shows the updated event information
+	 * @param eventID : event ID
+	 * @throws Exception
+	 */
+	void showUpdatedEvent(String eventID, AsyncCallback<Void> callback) throws Exception;
+	
 	
 }

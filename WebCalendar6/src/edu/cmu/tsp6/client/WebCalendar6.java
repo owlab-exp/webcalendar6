@@ -1,26 +1,16 @@
 package edu.cmu.tsp6.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Hyperlink;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.MenuBar;
-import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
+
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -71,7 +61,9 @@ public class WebCalendar6 implements EntryPoint {
 		@Override
 		public void execute() {
 			PopupPanel simplePopup = new PopupPanel(true);
-			simplePopup.setWidget(new HTML("Add Birthday Event"));
+			simplePopup.setTitle("Add Event");
+			
+			simplePopup.setWidget(new AddEditPanelWidget(simplePopup));
 			simplePopup.show();
 		}
 	}

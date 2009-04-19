@@ -5,6 +5,7 @@ import java.util.List;
 import edu.cmu.tsp6.client.bo.BirthdayEvent;
 import edu.cmu.tsp6.server.dao.exception.EventExistException;
 import edu.cmu.tsp6.server.dao.exception.EventNotExistException;
+import edu.cmu.tsp6.server.dao.exception.UserNotExistException;
 
 public interface IEventDAO {
 	/**

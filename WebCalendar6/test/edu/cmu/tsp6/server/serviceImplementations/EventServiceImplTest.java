@@ -1,32 +1,23 @@
 /**
  * 
  */
-package edu.cmu.tsp6.serviceImplementations;
+package edu.cmu.tsp6.server.serviceImplementations;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.dbunit.DatabaseUnitException;
-import org.dbunit.dataset.IDataSet;
-import org.dbunit.dataset.xml.FlatXmlDataSet;
-import org.dbunit.ext.mysql.MySqlConnection;
-import org.dbunit.operation.DatabaseOperation;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import edu.cmu.tsp6.bo.BirthdayEvent;
-import edu.cmu.tsp6.bo.User;
 import edu.cmu.tsp6.client.EventService;
+import edu.cmu.tsp6.client.bo.BirthdayEvent;
+import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.server.dao.DatabaseConnection;
 import edu.cmu.tsp6.server.dao.EventDAO;
-import edu.cmu.tsp6.server.dao.exception.EventNotExistException;
-import static org.junit.Assert.*;
+import edu.cmu.tsp6.server.serviceImplementations.EventServiceImpl;
 
 /**
  * @author kaalpurush
@@ -37,7 +28,7 @@ public class EventServiceImplTest {
 
 	/**
 	 * Test method for
-	 * {@link edu.cmu.tsp6.serviceImplementations.EventServiceImpl#addEvent(edu.cmu.tsp6.bo.Event)}
+	 * {@link edu.cmu.tsp6.server.serviceImplementations.EventServiceImpl#addEvent(edu.cmu.tsp6.bo.Event)}
 	 * .
 	 */
 	@Test
@@ -89,7 +80,7 @@ public class EventServiceImplTest {
 
 	/**
 	 * Test method for
-	 * {@link edu.cmu.tsp6.serviceImplementations.EventServiceImpl#addEvent(edu.cmu.tsp6.bo.Event)}
+	 * {@link edu.cmu.tsp6.server.serviceImplementations.EventServiceImpl#addEvent(edu.cmu.tsp6.bo.Event)}
 	 * .
 	 */
 	@Test(expected=IllegalStateException.class)
@@ -146,17 +137,18 @@ public class EventServiceImplTest {
 
 	/**
 	 * Test method for
-	 * {@link edu.cmu.tsp6.serviceImplementations.EventServiceImpl#getUser(java.lang.String)}
+	 * {@link edu.cmu.tsp6.server.serviceImplementations.EventServiceImpl#getUser(java.lang.String)}
 	 * .
 	 */
 	@Test
 	public void testGetUser() {
-		fail("Not yet implemented");
+		EventDAO ed = EventDAO.getInstance();
+		
 	}
 
 	/**
 	 * Test method for
-	 * {@link edu.cmu.tsp6.serviceImplementations.EventServiceImpl#updateEvent(edu.cmu.tsp6.bo.Event)}
+	 * {@link edu.cmu.tsp6.server.serviceImplementations.EventServiceImpl#updateEvent(edu.cmu.tsp6.bo.Event)}
 	 * .
 	 */
 	@Test

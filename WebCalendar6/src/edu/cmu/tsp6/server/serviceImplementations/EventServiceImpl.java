@@ -1,8 +1,9 @@
 /**
  * 
  */
-package edu.cmu.tsp6.serviceImplementations;
+package edu.cmu.tsp6.server.serviceImplementations;
 
+import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import edu.cmu.tsp6.client.EventService;
@@ -10,11 +11,13 @@ import edu.cmu.tsp6.client.bo.BirthdayEvent;
 import edu.cmu.tsp6.client.bo.Event;
 import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.server.dao.EventDAO;
+import edu.cmu.tsp6.server.dao.UserDAO;
 
 /**
  * @author kaalpurush
  *
  */
+@RemoteServiceRelativePath("events")
 public class EventServiceImpl extends RemoteServiceServlet implements EventService {
 
 	private static EventServiceImpl instance = new EventServiceImpl();
@@ -23,9 +26,9 @@ public class EventServiceImpl extends RemoteServiceServlet implements EventServi
 		return instance;
 	}
 
-	protected EventServiceImpl() {
-		
-	}
+//	protected EventServiceImpl() {
+//		
+//	}
 	
 	/**
 	 * 
@@ -68,8 +71,8 @@ public class EventServiceImpl extends RemoteServiceServlet implements EventServi
 	 */
 	@Override
 	public User getUser(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		UserDAO ud = UserDAO.getInstance();
+		return ud.getUser(userName);
 	}
 
 	/* (non-Javadoc)

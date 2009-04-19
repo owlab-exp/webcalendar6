@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import sun.security.jca.GetInstance;
-
 /**
  * A Singleton class which holds connection to the 
  * underlying database. The DAOs get {@link Statement} from
@@ -18,14 +16,24 @@ public class DatabaseConnection {
 	private static final String URL = "jdbc:mysql://open.owlab.com:3306/CALENDARDB";
 	private static final String USERNAME = "tsp6";
 	private static final String PASSWORD = "tsp6";
-	
+	private static final String className = "com.mysql.jdbc.Driver";
 	private static DatabaseConnection instance;
 	private Connection connection;
 	
 	private DatabaseConnection() {
 		try {
+			Class.forName(className).newInstance();
 			connection = DriverManager.getConnection(URL,USERNAME, PASSWORD);
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -55,6 +63,9 @@ public class DatabaseConnection {
 	 */
 	public Statement getStatement() {
 		try {
+			if(connection == null ) {
+				DriverManager.getConnection(URL,USERNAME, PASSWORD);
+			}
 			return connection.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package edu.cmu.tsp6.serviceImplementations;
+package edu.cmu.tsp6.server.serviceImplementations;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 

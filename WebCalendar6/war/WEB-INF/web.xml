@@ -11,16 +11,25 @@
   </welcome-file-list>
   
   <!-- Servlets -->
-  <!--
+  
   <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>edu.cmu.tsp6.server.GreetingServiceImpl</servlet-class>
+    <servlet-name>eventServlet</servlet-name>
+    <servlet-class>edu.cmu.tsp6.server.serviceImplementations.EventServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/webcalendar6/greet</url-pattern>
+    <servlet-name>eventServlet</servlet-name>
+    <url-pattern>/webcalendar6/events</url-pattern>
   </servlet-mapping>
-  -->
-
+  <!-- 
+	<servlet>
+		<servlet-name>shell</servlet-name>
+		<servlet-class>com.google.gwt.dev.shell.GWTShellServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>shell</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	-->
 </web-app>

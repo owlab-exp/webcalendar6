@@ -1,8 +1,13 @@
 package edu.cmu.tsp6.client.bo;
 
+import java.io.Serializable;
 import java.util.Date;
 //
-public class Event {
+public class Event implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5991203450262094509L;
 	User owner;
 	Date date;
 	int eventId;

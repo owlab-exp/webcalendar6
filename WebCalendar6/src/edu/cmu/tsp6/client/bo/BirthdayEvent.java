@@ -1,6 +1,5 @@
 package edu.cmu.tsp6.client.bo;
 
-import java.util.Date;
 
 
 /** 
@@ -12,6 +11,10 @@ import java.util.Date;
  *
  */
 public class BirthdayEvent extends Event {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8863804626182930952L;
 	User birthdayPerson;
 
 	public User getBirthdayPerson() {

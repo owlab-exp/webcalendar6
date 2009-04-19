@@ -1,22 +1,16 @@
 package edu.cmu.tsp6.server.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.dbunit.Assertion;
 import org.dbunit.DatabaseUnitException;
-import org.dbunit.dataset.Column;
-import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
-import org.dbunit.dataset.filter.IColumnFilter;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
 import org.dbunit.ext.mysql.MySqlConnection;
 import org.dbunit.operation.DatabaseOperation;
@@ -25,12 +19,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import edu.cmu.tsp6.client.bo.BirthdayEvent;
-import edu.cmu.tsp6.client.bo.Event;
 import edu.cmu.tsp6.client.bo.User;
-import edu.cmu.tsp6.server.dao.exception.EventExistException;
 import edu.cmu.tsp6.server.dao.exception.EventNotExistException;
-import edu.cmu.tsp6.server.dao.exception.UserExistException;
-import edu.cmu.tsp6.server.dao.exception.UserNotExistException;
 
 /**
  * Test {@link UserDAO}

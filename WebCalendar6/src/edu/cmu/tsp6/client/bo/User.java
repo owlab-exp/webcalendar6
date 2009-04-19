@@ -1,4 +1,7 @@
 package edu.cmu.tsp6.client.bo;
+
+import java.io.Serializable;
+
 /**
  * This class represent user information
  * in the web calendar system.
@@ -6,7 +9,11 @@ package edu.cmu.tsp6.client.bo;
  * @author YONG
  *
  */
-public class User {
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4052576605376917973L;
 	private String userId;
 	private String password;
 	private String name;
