@@ -98,7 +98,7 @@ public class UpdateUserWidget extends VerticalPanel {
 
 			@Override
 			public void onSuccess(User result) {
-				// fake user code
+				
 				/*if (result == null) {
 					result = new User();
 					result.setUserId("coconut");
