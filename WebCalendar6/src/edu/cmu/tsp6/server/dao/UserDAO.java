@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.cmu.tsp6.client.bo.NotifyUser;
 import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.server.dao.exception.UserExistException;
 import edu.cmu.tsp6.server.dao.exception.UserNotExistException;
@@ -181,5 +182,34 @@ public class UserDAO {
 			e.printStackTrace();
 			return null;
 		}	
+	}
+	
+	/**
+	 * Get the user list for notification mail
+	 * @return Null if there's no list to send
+	 */
+	public List<NotifyUser> getSendUserList() {
+		List<NotifyUser> userList = new ArrayList<NotifyUser>();
+		String sql = "select u.USER_ID, u.USER_EMAIL, (select USER_NAME from USER x where x.USER_ID = u.EVENT_BIRTH_PERSON_ID) USER_NAME, e.EVENT_DATE "
+				+"from USER u, EVENT e "
+				+"where e.EVENT_DATE-u.USER_REMIND_DAYS=curdate()";
+
+		try {
+			ResultSet rs = DatabaseConnection.getInstance().getStatement().executeQuery(sql);
+			while (rs.next()) {
+			
+				NotifyUser user = new NotifyUser();
+				user.setUserId(rs.getString("USER_ID"));
+				user.setName(rs.getString("USER_NAME"));
+				user.setEmail(rs.getString("USER_EMAIL"));
+				user.setDate(rs.getDate("EVENT_DATE"));
+				
+				userList.add(user);
+			}
+			return userList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
