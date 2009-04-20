@@ -29,7 +29,7 @@ public interface RegistryServiceAsync {
 	 * @param userID : user ID
 	 * @throws Exception
 	 */
-	void findUser(String userID, AsyncCallback<Void> callback) throws Exception;
+	void findUser(String userID, AsyncCallback<User> callback) throws Exception;
 	
 	
 }
