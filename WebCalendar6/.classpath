@@ -2,24 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/appengine-local-runtime-shared.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/geronimo-el_1.0_spec-1.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/geronimo-jsp_2.1_spec-1.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/geronimo-servlet_2.5_spec-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/jsp/ant-1.6.5.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/jsp/ant-launcher-1.6.5.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/jsp/commons-el-1.0.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/jsp/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/jsp/jasper-compiler-5.0.28.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/shared/jsp/jasper-runtime-5.0.28.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/user/appengine-api-1.0-sdk-1.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/user/orm/datanucleus-appengine-1.0.0.final.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/user/orm/datanucleus-core-1.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/user/orm/datanucleus-jpa-1.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/user/orm/geronimo-jpa_3.0_spec-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/user/orm/geronimo-jta_1.1_spec-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/user/orm/jdo2-api-2.3-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/javaSoftware/eclipse_6/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.2.0.v200904062334/appengine-java-sdk-1.2.0/lib/appengine-tools-api.jar"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/dbunit-2.4.4.jar"/>
@@ -30,6 +12,6 @@
 	<classpathentry kind="lib" path="lib/jmock-2.5.1.jar"/>
 	<classpathentry kind="lib" path="lib/jmock-junit4-2.5.1.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/mysql-connector-java-5.1.7-bin.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/eclipse/junit-4.5/junit-4.6.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
