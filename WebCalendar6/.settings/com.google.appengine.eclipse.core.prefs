@@ -1,3 +1,5 @@
-#Sat Apr 18 22:40:35 EDT 2009
+#Tue Apr 21 10:51:05 EDT 2009
 eclipse.preferences.version=1
 filesCopiedToWebInfLib=
+ormEnhancementInclusions=src/|test/
+validationExclusions=

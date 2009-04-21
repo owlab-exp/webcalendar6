@@ -32,4 +32,12 @@
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	-->
+	<servlet>
+  <servlet-name>loginServiceImpl</servlet-name>
+  <servlet-class>edu.cmu.tsp6.server.serviceImplementations.LoginServiceImpl</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>loginServiceImpl</servlet-name>
+  <url-pattern>/webcalendar6/login</url-pattern>
+</servlet-mapping>
 </web-app>
