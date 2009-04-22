@@ -190,7 +190,7 @@ public class UserDAO {
 	 */
 	public List<NotifyUser> getSendUserList() {
 		List<NotifyUser> userList = new ArrayList<NotifyUser>();
-		String sql = "select u.USER_ID, u.USER_EMAIL, (select USER_NAME from USER x where x.USER_ID = u.EVENT_BIRTH_PERSON_ID) USER_NAME, e.EVENT_DATE "
+		String sql = "select u.USER_ID, u.USER_EMAIL, (select USER_NAME from USER x where x.USER_ID = e.EVENT_BIRTH_PERSON_ID) USER_NAME, e.EVENT_DATE "
 				+"from USER u, EVENT e "
 				+"where e.EVENT_DATE-u.USER_REMIND_DAYS=curdate()";
 
