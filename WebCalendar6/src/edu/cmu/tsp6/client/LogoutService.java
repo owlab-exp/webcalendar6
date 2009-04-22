@@ -4,19 +4,17 @@
  */
 package edu.cmu.tsp6.client;
 
-public class LogoutService {
+public interface LogoutService {
 	/**
 	 * Logout method handling the logout process of a user
 	 * @param userID
 	 */
-	void logout(String userID){
-		
-	}
+	void logoutServer(String userID) throws Exception;
 	/**
 	 * invalidate a session from the user
 	 * @param sessionID
 	 */
-	void sessionInvalidation(){
-		
-	}
+//	void sessionInvalidation(){
+//		
+//	}
 }

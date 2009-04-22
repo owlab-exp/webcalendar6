@@ -15,5 +15,5 @@ public interface LoginService extends RemoteService {
 	 * @param password	: 
 	 * @throws Exception: to notify failure situation
 	 */
-	public void loginServer(String id, String password) throws Exception;
+	public String loginServer(String id, String password) throws Exception;
 }

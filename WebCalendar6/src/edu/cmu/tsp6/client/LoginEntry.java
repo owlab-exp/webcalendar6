@@ -88,9 +88,11 @@ public class LoginEntry implements EntryPoint {
 
 				}
 				public void onSuccess(String result) {
-					messageTextLabel.setText("Login success");
+					messageTextLabel.setText("Welcome " + result);
 					loginSubmitButton.setEnabled(true);
-					loginPanel.setVisible(false);
+					// Invisible after logged in
+					//loginPanel.setVisible(false);
+					loginPanel.removeFromParent();
 					
 				}
 			});

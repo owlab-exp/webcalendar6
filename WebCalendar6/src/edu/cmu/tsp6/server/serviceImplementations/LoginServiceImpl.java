@@ -16,7 +16,7 @@ import edu.cmu.tsp6.server.dao.UserDAO;
 public class LoginServiceImpl extends RemoteServiceServlet implements
 		LoginService {
 
-	public void loginServer(String id, String password) throws Exception {
+	public String loginServer(String id, String password) throws Exception {
 		System.out.println("id=" + id + ", password=" + password);
 //		String serverInfo = getServletContext().getServerInfo();
 //		String userAgent = getThreadLocalRequest().getHeader("User-Agent");
@@ -37,9 +37,10 @@ public class LoginServiceImpl extends RemoteServiceServlet implements
 			session = request.getSession();
 			// Need revising
 			session.setAttribute(id, new Object());
-			
+			return user.getName();
 		} else {
 			System.out.println("LoginServiceImpl: Fail");
+			return "";
 		}		
 		
 			
