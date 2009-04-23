@@ -35,9 +35,25 @@
 	<servlet>
   <servlet-name>loginServiceImpl</servlet-name>
   <servlet-class>edu.cmu.tsp6.server.serviceImplementations.LoginServiceImpl</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>RegistryServiceImpl</servlet-name>
+  <servlet-class>edu.cmu.tsp6.server.serviceImplementations.RegistryServiceImpl</servlet-class>
+  </servlet>  
+  <servlet> 
+  <servlet-name>UpdateServiceImpl</servlet-name>
+  <servlet-class>edu.cmu.tsp6.server.serviceImplementations.UpdateServiceImpl</servlet-class>  
 </servlet>
 <servlet-mapping>
   <servlet-name>loginServiceImpl</servlet-name>
   <url-pattern>/webcalendar6/login</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+  <servlet-name>RegistryServiceImpl</servlet-name> 
+  <url-pattern>/webcalendar6/Registration</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+  <servlet-name>UpdateServiceImpl</servlet-name> 
+  <url-pattern>/webcalendar6/Profile</url-pattern>
 </servlet-mapping>
 </web-app>
