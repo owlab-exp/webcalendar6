@@ -1,15 +1,14 @@
 package edu.cmu.tsp6.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+
+import edu.cmu.tsp6.client.composite.CalendarWidget;
 
 
 /**
@@ -30,16 +29,19 @@ public class WebCalendar6 implements EntryPoint {
 		dock.setWidth(SCREEN_WIDTH);
 		
 		//TEMP HyperLink
-		Hyperlink hl = new Hyperlink();
-		hl.setText("Suppose that this is an event edit link (let id=4)");
+//		Hyperlink hl = new Hyperlink();
+//		hl.setText("Suppose that this is an event edit link (let id=4)");
+//		
+//		hl.addClickHandler(new ClickHandler() {
+//			@Override
+//			public void onClick(ClickEvent event) {
+//				new EditEventCommand(4).execute();
+//			}
+//		});
+//		dock.add(hl, DockPanel.CENTER);
 		
-		hl.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				new EditEventCommand(4).execute();
-			}
-		});
-		dock.add(hl, DockPanel.CENTER);
+		CalendarWidget c = new CalendarWidget();
+		dock.add(c, DockPanel.CENTER);
 		
 		RootPanel.get("main").add(dock);
 	}
