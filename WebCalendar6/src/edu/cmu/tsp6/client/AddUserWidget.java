@@ -1,7 +1,6 @@
 package edu.cmu.tsp6.client;
  
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT; 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler; 
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -17,8 +16,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.VerticalPanel; 
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Widget;
-
+import com.google.gwt.user.client.ui.Widget; 
+import com.google.gwt.core.ext.*;
 import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.client.bo.NewUser;
 
@@ -26,7 +25,8 @@ public class AddUserWidget extends VerticalPanel {
 
 	private FlexTable formFlexTable = new FlexTable();
 	private HorizontalPanel buttonPanel = new HorizontalPanel();
-	private Button addUserButton = new Button("Registry");
+	private Label messageTextLabel = new Label();
+	private Button addUserButton = new Button("Register");
 	private Button cancelButton = new Button("Cancel");
 
 	// labels and textboxes
@@ -49,11 +49,8 @@ public class AddUserWidget extends VerticalPanel {
 	
 	private RegistryServiceAsync userSvcAsynch = GWT.create(RegistryService.class);
 
-
 	public AddUserWidget(final PopupPanel simplePopup) {
 		super();
-	//@Override
-	//public void onModuleLoad() {	
 
 		// Create table for form data.
 		formFlexTable.setWidget(0, 0, userIDLabel);
@@ -69,20 +66,31 @@ public class AddUserWidget extends VerticalPanel {
 		formFlexTable.setWidget(4, 1, eMailTextbox);		
 		formFlexTable.setWidget(5, 0, userRemindDayLabel);
 		formFlexTable.setWidget(5, 1, userRemindDayTextbox);
+
+		formFlexTable.setWidget(6, 0, addUserButton); 
+		formFlexTable.setWidget(6, 1, cancelButton); 
+		 
 		
+		messageTextLabel.setText("");
 		userRemindDayTextbox.setText("0");
 		userIDTextbox.setMaxLength(20);
 		userPasswordTextBox.setMaxLength(20);
 		userPasswordConfirmTextBox.setMaxLength(20);
-		
+		//
+		 int left = (Window.getClientWidth() - 100) / 3;
+         int top = (Window.getClientHeight() - 100) / 3;
+         
+         simplePopup.setPopupPosition(left, top);
+         
 		// create a user
 		final NewUser nu = new NewUser();
 		ServiceDefTarget endpoint = (ServiceDefTarget) userSvcAsynch;
 		endpoint.setServiceEntryPoint(GWT.getModuleBaseURL() + "Registration");
 
 		buttonPanel.add(formFlexTable);
-		buttonPanel.add(addUserButton);
-		buttonPanel.add(cancelButton);
+		//buttonPanel.add(addUserButton);
+		//buttonPanel.add(cancelButton);
+		buttonPanel.add(messageTextLabel);
 		
 		addUserButton.addClickHandler(new ClickHandler() {
 
@@ -90,6 +98,8 @@ public class AddUserWidget extends VerticalPanel {
 			public void onClick(ClickEvent event) {
 				System.out.println("add button clicked");
 
+				messageTextLabel.setText("");
+				
 				nu.setUserId(userIDTextbox.getText());
 				nu.setName(userIDTextbox.getText());
 				nu.setEmail(userIDTextbox.getText());
@@ -98,36 +108,53 @@ public class AddUserWidget extends VerticalPanel {
 				
 				//nu.setNewUser(result);				
 				userSvcAsynch.createUser(nu, new AsyncCallback<User>() { 
-							@Override
-							public void onFailure(Throwable caught) {
-								// TODO Auto-generated method stub
-								System.out.println("not adding user " );
-								caught.printStackTrace();
-							}
-
-							@Override
-							public void onSuccess(User result) {
+					@Override
+					public void onFailure(Throwable caught) {
+					// TODO Auto-generated method stub
+						System.out.println("not adding user " );
+						messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
 								
-  							// check if all fields are filled in
-								System.out.println("adding user " );
-							}
+					//caught.printStackTrace();
+					}
 
-						});
+					@Override
+					public void onSuccess(User result) {
+								
+  					// check if all fields are filled in
+					System.out.println("adding user " );
+					
+					messageTextLabel.setText("Hi " + result.getName()+ "! You are successfully registered.");
+					//buttonPanel.setVisible(false);
+					}
+				});
+			}
+		}
+	);
+		
+				cancelButton.addClickHandler(new ClickHandler() {
+			
+				@Override
+				public void onClick(ClickEvent event) {
+					System.out.println("cancel button clicked");
+					userIDTextbox.setText("");
+					userNameTextbox.setText("");
+					eMailTextbox.setText("");
+					userPasswordTextBox.setText("");
+					userRemindDayTextbox.setText("0");
+					userPasswordConfirmTextBox.setText("");
+					messageTextLabel.setText("");
+							
+					//formFlexTable.setVisible(false);
+					//buttonPanel.setVisible(false);
+					simplePopup.setVisible(false);
 				}
-
+			
 			}
 
-		);
-		
-		// Assemble Main panel. 
-		//RootPanel.get().add(formFlexTable);
-		//RootPanel.get().add(buttonPanel);
-		
+		);	
 		this.add(formFlexTable);
 		this.add(buttonPanel);
 
-		// Associate the Main panel with the HTML host page.
-		// RootPanel.get("addEditComponent").add(mainPanel);
 		userIDTextbox.setFocus(true);  
 
 	}
