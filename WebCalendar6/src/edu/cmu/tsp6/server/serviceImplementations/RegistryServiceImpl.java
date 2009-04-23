@@ -14,7 +14,7 @@ import edu.cmu.tsp6.server.dao.UserDAO;
  * @author YONG
  *
  */
-@RemoteServiceRelativePath("events")
+@RemoteServiceRelativePath("Registration")
 public class RegistryServiceImpl extends RemoteServiceServlet implements RegistryService {
 
 	/**
@@ -53,13 +53,13 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 		if (usr.getRemindDays()==0) {
 			throw new NullPointerException("User Name should be greater than 0");
 		}
+		System.out.print("-1");
 		
 		UserDAO ud = UserDAO.getInstance();
 		//validate if event with same birthday person
+		System.out.print(usr.getUserId());
 		
-		if (ud.getUser(usr.getUserId())!= null) {
-			throw new IllegalStateException("User has been registered already");
-		}
+		System.out.print("-3");
 		// save it using the UserDAO
 		
 		ud.addUser((User)usr);
@@ -104,7 +104,6 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 		ud.editUser(usr);
 		//test it
 	}
-
 	
 
 }
