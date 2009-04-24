@@ -3,7 +3,6 @@ package edu.cmu.tsp6.client;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
-import edu.cmu.tsp6.rpc.exception.LoginFailureException;
 
 
 

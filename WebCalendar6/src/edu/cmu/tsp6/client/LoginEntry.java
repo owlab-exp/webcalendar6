@@ -18,7 +18,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-import edu.cmu.tsp6.rpc.exception.LoginFailureException;
 
 
 
