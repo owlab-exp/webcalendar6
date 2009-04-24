@@ -22,7 +22,7 @@ public interface RegistryServiceAsync {
 	 * @param user
 	 * @throws Exception
 	 */
-	void updateUser(User user, AsyncCallback<User> callback) throws Exception;
+	void updateUser(User user, AsyncCallback<User> callback) ;
 	
 	/**
 	 * Shows the updated event information
