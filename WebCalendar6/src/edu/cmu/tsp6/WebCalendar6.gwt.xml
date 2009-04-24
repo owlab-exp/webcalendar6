@@ -16,6 +16,7 @@
 
 	<!-- Specify the app entry point class.                         -->
 	<entry-point class='edu.cmu.tsp6.client.WebCalendar6' />
-	<servlet path="/webcalendar6/login" class="edu.cmu.tsp6.server.serviceImplementations.LoginServiceImpl" />
 	<entry-point class="edu.cmu.tsp6.client.LoginEntry" />
+	<servlet path="/login" class="edu.cmu.tsp6.server.serviceImplementations.LoginServiceImpl" />
+	
 </module>
