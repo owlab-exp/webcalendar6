@@ -122,7 +122,7 @@ public class AddUserWidget extends VerticalPanel {
 								
   					// check if all fields are filled in
 					System.out.println("adding user " );
-					
+					System.out.println(result);
 					messageTextLabel.setText("Hi " + result.getName()+ "! You are successfully registered.");
 					//buttonPanel.setVisible(false);
 					}

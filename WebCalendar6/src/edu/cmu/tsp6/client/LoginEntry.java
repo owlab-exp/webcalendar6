@@ -8,13 +8,19 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.rpc.InvocationException;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+
+import edu.cmu.tsp6.rpc.exception.LoginFailureException;
+
+
 
 /**
  * @author Ernest Lee
@@ -37,6 +43,7 @@ public class LoginEntry implements EntryPoint {
 
 	private final LoginServiceAsync loginService = GWT.create(LoginService.class);
 
+	private RootPanel mainPanel = null;
 	/* (non-Javadoc)
 	 * @see com.google.gwt.core.client.EntryPoint#onModuleLoad()
 	 */
@@ -44,6 +51,7 @@ public class LoginEntry implements EntryPoint {
 	public void onModuleLoad() {
 		// TODO Auto-generated method stub
 		
+		//loginPanel.setHorizontalAlignment(VerticalPanel.ALIGN_CENTER);
 		userIdTextBox.setMaxLength(20);
 		userPasswordTextBox.setMaxLength(20);
 		loginPanel.add(userIdLabel);
@@ -55,8 +63,11 @@ public class LoginEntry implements EntryPoint {
 		
 		loginPanel.add(messageTextLabel);
 		
-		RootPanel.get("main").add(loginPanel);
-		
+		// attach this panel to ...
+		RootPanel.get("login").add(loginPanel);
+		mainPanel = RootPanel.get("main");
+		mainPanel.setVisible(false);
+
 		userIdTextBox.setFocus(true);
 		
 		loginSubmitButton.addClickHandler(new ClickHandler() {
@@ -67,9 +78,13 @@ public class LoginEntry implements EntryPoint {
 		});
 		registerUserLink.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event){
-				
+				 PopupPanel profilePopup = new PopupPanel(true);
+			     //simplePopup.setWidget(new HTML("EditProfileCommand"));
+			     profilePopup.setWidget(new AddUserWidget(profilePopup));
+			     profilePopup.show();
 			}
 		});
+		
 	}
 	
 	private void sendAuthInfoToServer() {
@@ -82,17 +97,32 @@ public class LoginEntry implements EntryPoint {
 		try {
 			loginService.loginServer(id, password, new AsyncCallback<String>(){
 				public void onFailure(Throwable caught) {
-					messageTextLabel.setText("Login failure: " + caught.getMessage());
-					loginSubmitButton.setEnabled(true);
-					userIdTextBox.setFocus(true);
+					
+//					messageTextLabel.setText("Login failure: " + caught.getClass().getName());
+//					loginSubmitButton.setEnabled(true);
+//					userIdTextBox.setFocus(true);
+					try {
+						throw caught;
+					} catch(InvocationException ie) {
+						messageTextLabel.setText("Internal error occurred");
+						loginSubmitButton.setEnabled(true);
+					} catch(LoginFailureException lfe) {
+						messageTextLabel.setText("Login failed: " + lfe.getMessage());
+						loginSubmitButton.setEnabled(true);
+					} catch(Throwable t) {
+						messageTextLabel.setText("Unexpected error occurred");
+						loginSubmitButton.setEnabled(true);
+					}
 
 				}
 				public void onSuccess(String result) {
+					//message has to be sent to another message field
 					messageTextLabel.setText("Welcome " + result);
 					loginSubmitButton.setEnabled(true);
 					// Invisible after logged in
 					//loginPanel.setVisible(false);
 					loginPanel.removeFromParent();
+					mainPanel.setVisible(true);
 					
 				}
 			});
