@@ -53,13 +53,13 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 		if (usr.getRemindDays()==0) {
 			throw new NullPointerException("User Name should be greater than 0");
 		}
-		System.out.print("-1");
+		System.out.println("-1");
 		
 		UserDAO ud = UserDAO.getInstance();
 		//validate if event with same birthday person
-		System.out.print(usr.getUserId());
+		System.out.println(usr.getUserId());
 		
-		System.out.print("-3");
+		System.out.println("-3");
 		// save it using the UserDAO
 		
 		ud.addUser((User)usr);
