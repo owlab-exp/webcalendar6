@@ -142,6 +142,10 @@ public class CalendarWidget extends Composite {
  			}
 		});
 	}
+	
+	public void init() {
+		fireMonthChangesEvent(currentMonth, currentYear);
+	}
 
 	/**
 	 * Set the current date arrangement to start at a specific block in the
@@ -298,6 +302,7 @@ public class CalendarWidget extends Composite {
 			panel.setSize(BLOCK_WIDTH, BLOCK_HEIGHT);
 
 			// 2. Add in the static widgets
+			eventsPanel = new VerticalPanel();
 			panel.add(l, DockPanel.NORTH);
 			panel.add(eventsPanel, DockPanel.CENTER);
 			
@@ -329,7 +334,7 @@ public class CalendarWidget extends Composite {
 		}
 
 		public void clearEvents() {
-			eventsPanel = new VerticalPanel();
+			eventsPanel.clear();
 		}
 	}
 

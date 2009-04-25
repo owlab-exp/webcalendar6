@@ -25,5 +25,8 @@ public class BirthdayEvent extends Event {
 		this.birthdayPerson = birthdayPerson;
 	}
 	
-		
+	@Override
+	public String toString() {
+		return getOwner().getName() + "," + getBirthdayPerson().getName() + "," + getDate();
+	}
 }

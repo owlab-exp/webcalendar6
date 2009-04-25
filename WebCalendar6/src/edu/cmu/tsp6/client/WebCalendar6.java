@@ -16,7 +16,9 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import edu.cmu.tsp6.client.bo.BirthdayEvent;
+import edu.cmu.tsp6.client.bo.MonthEnum;
 import edu.cmu.tsp6.client.composite.CalendarWidget;
+import edu.cmu.tsp6.client.composite.MonthChangeListener;
 
 
 /**
@@ -37,38 +39,41 @@ public class WebCalendar6 implements EntryPoint {
 		
 		dock.add(menu, DockPanel.NORTH);
 		dock.setWidth(SCREEN_WIDTH);
-		
-		//TEMP HyperLink
-//		Hyperlink hl = new Hyperlink();
-//		hl.setText("Suppose that this is an event edit link (let id=4)");
-//		
-//		hl.addClickHandler(new ClickHandler() {
-//			@Override
-//			public void onClick(ClickEvent event) {
-//				new EditEventCommand(4).execute();
-//			}
-//		});
-//		dock.add(hl, DockPanel.CENTER);
-		
-		CalendarWidget c = new CalendarWidget();
+			
+		final CalendarWidget c = new CalendarWidget();
 		dock.add(c, DockPanel.CENTER);
 		
 		ServiceDefTarget endpoint = (ServiceDefTarget) birthdayEventSvcAsynch;
 		endpoint.setServiceEntryPoint(GWT.getModuleBaseURL() + "birthdayEvents");
 		
-		birthdayEventSvcAsynch.getUpcomingBirthdayEvents(new Date(), 1, new AsyncCallback<List<BirthdayEvent>>() {
-
+		//Listen for month changes
+		MonthChangeListener mcl = new MonthChangeListener() {
 			@Override
-			public void onFailure(Throwable caught) {
-				
-			}
+			public void monthChanged(int newMonth, int newYear) {
+				birthdayEventSvcAsynch.getBirthdayEventsInMonth(MonthEnum.map(newMonth), new AsyncCallback<List<BirthdayEvent>>() {
 
-			@Override
-			public void onSuccess(List<BirthdayEvent> result) {
-				System.out.println(result);
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onSuccess(List<BirthdayEvent> result) {
+						c.setEvents(result);
+						
+						System.out.println(result);
+					}
+					
+				});
 			}
-			
-		});
+		};
+		
+		//Add Listener
+		c.addMonthChangesListener(mcl);
+		
+		//Init
+		c.init();
 		
 		RootPanel.get("main").add(dock);
 	}
