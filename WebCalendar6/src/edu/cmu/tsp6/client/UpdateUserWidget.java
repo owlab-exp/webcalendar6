@@ -76,6 +76,7 @@ public class UpdateUserWidget extends VerticalPanel {
 
 		buttonPanel.add(addUserButton);
 		buttonPanel.add(cancelButton);		
+		userIDTextbox.setEnabled(false);
 		
 		userSvcAsynch.getCurrentUser(new AsyncCallback<User>() {
 
