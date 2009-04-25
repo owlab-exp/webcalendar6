@@ -24,7 +24,9 @@ import edu.cmu.tsp6.client.bo.NewUser;
 public class AddUserWidget extends VerticalPanel {
 
 	private FlexTable formFlexTable = new FlexTable();
-	private HorizontalPanel buttonPanel = new HorizontalPanel();
+	private HorizontalPanel buttonPanel = new HorizontalPanel();	
+	private HorizontalPanel MsgPanel = new HorizontalPanel();
+	
 	private Label messageTextLabel = new Label();
 	private Button addUserButton = new Button("Register");
 	private Button cancelButton = new Button("Cancel");
@@ -88,9 +90,7 @@ public class AddUserWidget extends VerticalPanel {
 		endpoint.setServiceEntryPoint(GWT.getModuleBaseURL() + "Registration");
 
 		buttonPanel.add(formFlexTable);
-		//buttonPanel.add(addUserButton);
-		//buttonPanel.add(cancelButton);
-		buttonPanel.add(messageTextLabel);
+		buttonPanel.add(messageTextLabel); 
 		
 		addUserButton.addClickHandler(new ClickHandler() {
 
@@ -112,19 +112,18 @@ public class AddUserWidget extends VerticalPanel {
 					public void onFailure(Throwable caught) {
 					// TODO Auto-generated method stub
 						System.out.println("not adding user " );
-						messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
-								
+						//messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
+						messageTextLabel.setText("User information is not correct.\n Please check!");
 					//caught.printStackTrace();
 					}
 
 					@Override
 					public void onSuccess(User result) {
 								
-  					// check if all fields are filled in
-					System.out.println("adding user " );
-					System.out.println(result);
-					messageTextLabel.setText("Hi " + result.getName()+ "! You are successfully registered.");
-					//buttonPanel.setVisible(false);
+	  					// check if all fields are filled in
+						System.out.println("adding user " );
+						System.out.println(result);
+						messageTextLabel.setText("Hi " + result.getName()+ "! You are successfully registered.");
 					}
 				});
 			}
