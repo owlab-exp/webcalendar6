@@ -8,4 +8,5 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public interface LogoutServiceAsync {
 	//void loginServer(String id, String password, AsyncCallback<String> callback)throws Exception;
 	void logoutServer(String id, AsyncCallback<String> callback) throws Exception;
+	void logoutServer(AsyncCallback<String> callback) throws Exception;
 }

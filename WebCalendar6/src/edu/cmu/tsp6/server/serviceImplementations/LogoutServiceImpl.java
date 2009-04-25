@@ -35,4 +35,22 @@ LogoutService {
 		
 			
 	}
+	
+	public void logoutServer() throws Exception {
+		HttpServletRequest request = null;
+		HttpSession session = null;
+		
+
+			request = this.getThreadLocalRequest();
+			session = request.getSession(false);
+			// Need revising
+			//session.setAttribute(id, new Object());
+			//String userId = (String)session.getAttribute("userId");
+			
+			session.invalidate();
+			//return id;
+			
+		
+			
+	}
 }

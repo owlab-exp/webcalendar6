@@ -19,4 +19,6 @@
 	<entry-point class="edu.cmu.tsp6.client.LoginEntry" />
 	<servlet path="/login" class="edu.cmu.tsp6.server.serviceImplementations.LoginServiceImpl" />
 	
+	<servlet path="/logout" class="edu.cmu.tsp6.server.serviceImplementations.LogoutServiceImpl" />
+	
 </module>

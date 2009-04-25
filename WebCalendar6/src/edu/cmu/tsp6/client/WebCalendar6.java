@@ -1,7 +1,10 @@
 package edu.cmu.tsp6.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.rpc.InvocationException;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.MenuBar;
@@ -82,9 +85,42 @@ public class WebCalendar6 implements EntryPoint {
 	class LogoutCommand implements Command {
 		@Override
 		public void execute() {
-			PopupPanel simplePopup = new PopupPanel(true);
-			simplePopup.setWidget(new HTML("LogoutCommand"));
-			simplePopup.show();
+//			PopupPanel simplePopup = new PopupPanel(true);
+//			simplePopup.setWidget(new HTML("LogoutCommand"));
+//			simplePopup.show();
+			final LogoutServiceAsync logoutService = GWT.create(LogoutService.class);
+			try {
+				logoutService.logoutServer(new AsyncCallback<String>(){
+					public void onFailure(Throwable caught) {
+						System.out.println("Logout failed because " + caught.getMessage());
+//					messageTextLabel.setText("Login failure: " + caught.getClass().getName());
+//					loginSubmitButton.setEnabled(true);
+//					userIdTextBox.setFocus(true);
+//					try {
+//						throw caught;
+//					} catch(InvocationException ie) {
+//						messageTextLabel.setText("Internal error occurred");
+//						loginSubmitButton.setEnabled(true);
+//					} catch(LoginFailureException lfe) {
+//						messageTextLabel.setText("Login failed: " + lfe.getMessage());
+//						loginSubmitButton.setEnabled(true);
+//					} catch(Throwable t) {
+//						messageTextLabel.setText("Unexpected error occurred");
+//						loginSubmitButton.setEnabled(true);
+//					}
+
+					}
+					public void onSuccess(String result) {
+						//message has to be sent to another message field
+						System.out.println("Logout successed");
+						
+						
+					}
+				});
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

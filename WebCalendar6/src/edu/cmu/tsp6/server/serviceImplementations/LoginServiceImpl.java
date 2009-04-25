@@ -46,7 +46,8 @@ public class LoginServiceImpl extends RemoteServiceServlet implements
 			request = this.getThreadLocalRequest();
 			session = request.getSession();
 			// Need revising
-			session.setAttribute(id, new Object());
+			session.setAttribute("userId", id);
+			
 			message = "Welcome " + user.getName();
 		} else {
 			throw new LoginFailureException("Password is incorrect!");
