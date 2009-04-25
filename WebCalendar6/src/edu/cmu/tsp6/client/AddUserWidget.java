@@ -99,8 +99,8 @@ public class AddUserWidget extends VerticalPanel {
 				System.out.println("add button clicked");
 
 				messageTextLabel.setText("");
-				
-				nu.setUserId(userIDTextbox.getText());
+
+				nu.setUserId(userIDTextbox.getText());										
 				nu.setName(userIDTextbox.getText());
 				nu.setEmail(userIDTextbox.getText());
 				nu.setPassword(userPasswordTextBox.getText());
@@ -112,8 +112,8 @@ public class AddUserWidget extends VerticalPanel {
 					public void onFailure(Throwable caught) {
 					// TODO Auto-generated method stub
 						System.out.println("not adding user " );
-						//messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
-						messageTextLabel.setText("User information is not correct.\n Please check!");
+						messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
+						//messageTextLabel.setText("User information is not correct.\n Please check!");
 					//caught.printStackTrace();
 					}
 
