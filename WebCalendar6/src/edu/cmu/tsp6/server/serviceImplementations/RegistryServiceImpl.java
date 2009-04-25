@@ -41,6 +41,11 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 		if (usr.getUserId() == null) {
 			throw new NullPointerException("User Id should not be null");
 		}
+		
+		if (this.findUser(usr.getUserId()) != null) {
+			throw new NullPointerException("User Id is already registered");
+		}
+		
 		if (usr.getName() == null) {
 			throw new NullPointerException("User Name should not be null");
 		}
@@ -67,9 +72,9 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 	}
 
 	@Override
-	public User findUser(String userName) {
+	public User findUser(String userId) {
 		UserDAO ud = UserDAO.getInstance();
-		return ud.getUser(userName);
+		return ud.getUser(userId);
 	}
 
 	@Override
