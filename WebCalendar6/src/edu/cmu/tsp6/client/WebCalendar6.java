@@ -1,16 +1,21 @@
 package edu.cmu.tsp6.client;
 
+import java.util.Date;
+import java.util.List;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.InvocationException;
+import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
+import edu.cmu.tsp6.client.bo.BirthdayEvent;
 import edu.cmu.tsp6.client.composite.CalendarWidget;
 
 
@@ -19,6 +24,8 @@ import edu.cmu.tsp6.client.composite.CalendarWidget;
  */
 public class WebCalendar6 implements EntryPoint {
 	private String SCREEN_WIDTH = "100%";
+
+	private BirthdayEventServiceAsync birthdayEventSvcAsynch = GWT.create(BirthdayEventService.class);
 	
 	/**
 	 * This is the entry point method.
@@ -45,6 +52,23 @@ public class WebCalendar6 implements EntryPoint {
 		
 		CalendarWidget c = new CalendarWidget();
 		dock.add(c, DockPanel.CENTER);
+		
+		ServiceDefTarget endpoint = (ServiceDefTarget) birthdayEventSvcAsynch;
+		endpoint.setServiceEntryPoint(GWT.getModuleBaseURL() + "birthdayEvents");
+		
+		birthdayEventSvcAsynch.getUpcomingBirthdayEvents(new Date(), 1, new AsyncCallback<List<BirthdayEvent>>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				
+			}
+
+			@Override
+			public void onSuccess(List<BirthdayEvent> result) {
+				System.out.println(result);
+			}
+			
+		});
 		
 		RootPanel.get("main").add(dock);
 	}

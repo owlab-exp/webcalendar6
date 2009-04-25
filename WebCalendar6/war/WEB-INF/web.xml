@@ -21,6 +21,17 @@
     <servlet-name>eventServlet</servlet-name>
     <url-pattern>/webcalendar6/events</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>birhtdayEventServlet</servlet-name>
+    <servlet-class>edu.cmu.tsp6.server.serviceImplementations.BirthdayEventServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>birhtdayEventServlet</servlet-name>
+    <url-pattern>/webcalendar6/birthdayEvents</url-pattern>
+  </servlet-mapping>
+  
   <!-- 
 	<servlet>
 		<servlet-name>shell</servlet-name>

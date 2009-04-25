@@ -1,9 +1,12 @@
-package edu.cmu.tsp6.server.service;
+package edu.cmu.tsp6.server.serviceImplementations;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import edu.cmu.tsp6.client.BirthdayEventService;
 import edu.cmu.tsp6.client.bo.BirthdayEvent;
@@ -11,7 +14,13 @@ import edu.cmu.tsp6.client.bo.MonthEnum;
 import edu.cmu.tsp6.server.dao.EventDAO;
 import edu.cmu.tsp6.server.dao.IEventDAO;
 
-public class BirthdayEventServiceImpl implements BirthdayEventService {
+@RemoteServiceRelativePath("birthdayEvents")
+public class BirthdayEventServiceImpl extends RemoteServiceServlet  implements BirthdayEventService {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private IEventDAO eventDAO;
 
 	public BirthdayEventServiceImpl() {

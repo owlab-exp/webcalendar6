@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import edu.cmu.tsp6.client.bo.MonthEnum;
 import edu.cmu.tsp6.server.dao.IEventDAO;
+import edu.cmu.tsp6.server.serviceImplementations.BirthdayEventServiceImpl;
 
 public class BirthdayEventServiceImplTest {
 
