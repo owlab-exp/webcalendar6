@@ -38,6 +38,8 @@ public class LoginEntry implements EntryPoint {
 	
 	private Hyperlink registerUserLink = new Hyperlink("Register User", "foo");
 	
+	private Hyperlink removeEventLink = new Hyperlink("Remove Event", "foo");
+	
 	private Label messageTextLabel = new Label();
 
 	private final LoginServiceAsync loginService = GWT.create(LoginService.class);
@@ -61,10 +63,15 @@ public class LoginEntry implements EntryPoint {
 		loginPanel.add(loginSubmitButton);
 		loginPanel.add(registerUserLink);
 		
+		loginPanel.add(removeEventLink);
+		
 		loginPanel.add(messageTextLabel);
 		
 		// attach this panel to ...
 		RootPanel.get("login").add(loginPanel);
+		
+		Globals.putPanel("loginPanel", loginPanel);
+		
 		mainPanel = RootPanel.get("main");
 		listPanel = RootPanel.get("list");
 		mainPanel.setVisible(false);
@@ -84,6 +91,15 @@ public class LoginEntry implements EntryPoint {
 			     //simplePopup.setWidget(new HTML("EditProfileCommand"));
 			     profilePopup.setWidget(new AddUserWidget(profilePopup));
 			     profilePopup.show();
+			}
+		});
+		
+		removeEventLink.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event){
+				 PopupPanel eventRemovePopup = new PopupPanel(true);
+			     //simplePopup.setWidget(new HTML("EditProfileCommand"));
+			     eventRemovePopup.setWidget(new RemoveEventWidget(eventRemovePopup));
+			     eventRemovePopup.show();
 			}
 		});
 		
@@ -122,8 +138,8 @@ public class LoginEntry implements EntryPoint {
 					messageTextLabel.setText("Welcome " + result);
 					loginSubmitButton.setEnabled(true);
 					// Invisible after logged in
-					//loginPanel.setVisible(false);
-					loginPanel.removeFromParent();
+					loginPanel.setVisible(false);
+					//loginPanel.removeFromParent();
 					mainPanel.setVisible(true);
 					listPanel.setVisible(true);
 					

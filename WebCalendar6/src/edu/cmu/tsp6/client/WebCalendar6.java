@@ -8,7 +8,6 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.rpc.InvocationException;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.FlexTable;
@@ -16,6 +15,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.MenuBar;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
@@ -173,27 +173,20 @@ public class WebCalendar6 implements EntryPoint {
 				logoutService.logoutServer(new AsyncCallback<String>(){
 					public void onFailure(Throwable caught) {
 						System.out.println("Logout failed because " + caught.getMessage());
-//					messageTextLabel.setText("Login failure: " + caught.getClass().getName());
-//					loginSubmitButton.setEnabled(true);
-//					userIdTextBox.setFocus(true);
-//					try {
-//						throw caught;
-//					} catch(InvocationException ie) {
-//						messageTextLabel.setText("Internal error occurred");
-//						loginSubmitButton.setEnabled(true);
-//					} catch(LoginFailureException lfe) {
-//						messageTextLabel.setText("Login failed: " + lfe.getMessage());
-//						loginSubmitButton.setEnabled(true);
-//					} catch(Throwable t) {
-//						messageTextLabel.setText("Unexpected error occurred");
-//						loginSubmitButton.setEnabled(true);
-//					}
-
 					}
 					public void onSuccess(String result) {
+						RootPanel mainPanel = RootPanel.get("main");
+						//RootPanel loginPanel = RootPanel.get("login");
 						//message has to be sent to another message field
 						System.out.println("Logout successed");
+						//loginPanel.removeFromParent();
+						mainPanel.setVisible(false);
+						//loginPanel.setVisible(true);
 						
+						Panel loginPanel = Globals.getPanel("loginPanel");
+						///loginPanel.g
+						loginPanel.setVisible(true);
+						//loginPanel.
 						
 					}
 				});
