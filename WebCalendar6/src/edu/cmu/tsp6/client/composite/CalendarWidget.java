@@ -15,9 +15,11 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
 
+import edu.cmu.tsp6.client.RemoveEventWidget;
 import edu.cmu.tsp6.client.bo.BirthdayEvent;
 import edu.cmu.tsp6.client.bo.Event;
 
@@ -328,8 +330,22 @@ public class CalendarWidget extends Composite {
 				return;
 			
 			for(BirthdayEvent e : events) {
-				Hyperlink h = new Hyperlink(e.getBirthdayPerson().getName(), "");
+				Hyperlink h = new Hyperlink(e.getBirthdayPerson().getName(), "AnyBirth");
 				eventsPanel.add(h);
+				final Integer eventId = e.getEventId();
+				h.addClickHandler(new ClickHandler() {
+					public void onClick(ClickEvent event){
+						 PopupPanel eventRemovePopup = new PopupPanel(true);
+					     //simplePopup.setWidget(new HTML("EditProfileCommand"));
+						 RemoveEventWidget removeEventWidget = new RemoveEventWidget(eventRemovePopup);
+						 
+						 
+						 removeEventWidget.setEventId(eventId);
+						 
+					     eventRemovePopup.setWidget(removeEventWidget);
+					     eventRemovePopup.show();
+					}
+				});
 			}
 		}
 
