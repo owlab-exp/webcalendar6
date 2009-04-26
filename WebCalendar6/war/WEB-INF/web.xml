@@ -85,4 +85,12 @@
   <servlet-name>logoutServiceImpl</servlet-name>
   <url-pattern>/webcalendar6/logout</url-pattern>
 </servlet-mapping>
+<servlet>
+  <servlet-name>removeEventServiceImpl</servlet-name>
+  <servlet-class>edu.cmu.tsp6.server.serviceImplementations.RemoveEventServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>removeEventServiceImpl</servlet-name>
+  <url-pattern>/webcalendar6/removeEvent</url-pattern>
+</servlet-mapping>
 </web-app>
