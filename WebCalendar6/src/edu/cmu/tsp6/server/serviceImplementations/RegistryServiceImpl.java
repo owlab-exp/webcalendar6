@@ -31,7 +31,7 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 	 * @see edu.cmu.tsp6.client.RegistryService#createUser(edu.cmu.tsp6.bo.User)
 	 */
 	@Override
-	public void createUser(User user) {
+	public void createUser(User user) throws Exception  {
 		// check if correct type
 		if (!(user instanceof User)) {
 			throw new UnsupportedOperationException("User registration is supported");
@@ -42,9 +42,9 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 			throw new NullPointerException("User Id should not be null");
 		}
 		
-		if (this.findUser(usr.getUserId()) != null) {
-			throw new NullPointerException("User Id is already registered");
-		}
+//		if ( findUser(usr.getUserId()) == null) {
+//			throw new NullPointerException("User Id is already registered");
+//		}
 		
 		if (usr.getName() == null) {
 			throw new NullPointerException("User Name should not be null");
@@ -57,14 +57,11 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 		}
 		if (usr.getRemindDays()==0) {
 			throw new NullPointerException("User Name should be greater than 0");
-		}
-		System.out.println("-1");
-		
+		} 		
 		UserDAO ud = UserDAO.getInstance();
 		//validate if event with same birthday person
 		System.out.println(usr.getUserId());
-		
-		System.out.println("-3");
+		 
 		// save it using the UserDAO
 		
 		ud.addUser((User)usr);
@@ -72,43 +69,10 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 	}
 
 	@Override
-	public User findUser(String userId) {
+	public User findUser(String userId) throws Exception  {
 		UserDAO ud = UserDAO.getInstance();
 		return ud.getUser(userId);
 	}
 
-	@Override
-	public void updateUser(User user) throws Exception {
-		// check if correct type
-		/*if (!(user instanceof User)) {
-			throw new UnsupportedOperationException("User registration is supported");
-		}*/
-		User usr = (User) this.getThreadLocalRequest().getSession().getAttribute(WebCalendarConstants.USER);
-		
-		if (usr.getName() == null) {
-			throw new NullPointerException("User Name should not be null");
-		}
-		if (usr.getPassword() == null) {
-			throw new NullPointerException("Password should not be null");
-		}
-		if (usr.getEmail() == null) {
-			throw new NullPointerException("User Name should not be null");
-		}
-		if (usr.getRemindDays()==0) {
-			throw new NullPointerException("User Name should be greater than 0");
-		}
-		
-		UserDAO ud = UserDAO.getInstance();
-		//validate if event with same birthday person
-		
-		if (ud.getUser(usr.getUserId())!= null) {
-			throw new IllegalStateException("User has been registered already");
-		}
-		// save it using the UserDAO
-		
-		ud.editUser(usr);
-		//test it
-	}
 	
-
 }

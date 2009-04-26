@@ -16,13 +16,13 @@ public interface RegistryServiceAsync {
 	 * Adds an event. The event must have an associated user, a date
 	 * @param user 
 	 */
-	void createUser (User user, AsyncCallback<User> callback); 
+	void createUser (User user, AsyncCallback<User> callback) throws Exception   ; 
 	/**
 	 * Updates the event information if the user is the owner of the event
 	 * @param user
 	 * @throws Exception
 	 */
-	void updateUser(User user, AsyncCallback<User> callback) ;
+	//void updateUser(User user, AsyncCallback<User> callback) ;
 	
 	/**
 	 * Shows the updated event information

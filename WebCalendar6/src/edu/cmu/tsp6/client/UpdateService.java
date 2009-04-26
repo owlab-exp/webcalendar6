@@ -19,7 +19,7 @@ public interface UpdateService extends RemoteService  {
 	 * @return null		: when it does not have
 	 * @throws Exception: to notify if any error
 	 */
-	public User findUser(String userId) throws Exception ;
+	public User findUser(String userId)  throws Exception;
 	 
 
 	public User getCurrentUser();

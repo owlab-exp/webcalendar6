@@ -24,8 +24,8 @@ import edu.cmu.tsp6.client.bo.NewUser;
 public class AddUserWidget extends VerticalPanel {
 
 	private FlexTable formFlexTable = new FlexTable();
-	private HorizontalPanel buttonPanel = new HorizontalPanel();	
-	private HorizontalPanel MsgPanel = new HorizontalPanel();
+	private FlexTable buttonFlexTable = new FlexTable();
+	private HorizontalPanel buttonPanel = new HorizontalPanel();	 
 	
 	private Label messageTextLabel = new Label();
 	private Button addUserButton = new Button("Register");
@@ -69,8 +69,8 @@ public class AddUserWidget extends VerticalPanel {
 		formFlexTable.setWidget(5, 0, userRemindDayLabel);
 		formFlexTable.setWidget(5, 1, userRemindDayTextbox);
 
-		formFlexTable.setWidget(6, 0, addUserButton); 
-		formFlexTable.setWidget(6, 1, cancelButton); 
+		buttonFlexTable.setWidget(0, 0, addUserButton); 
+		buttonFlexTable.setWidget(0, 1, cancelButton); 
 		 
 		
 		messageTextLabel.setText("");
@@ -91,6 +91,9 @@ public class AddUserWidget extends VerticalPanel {
 
 		buttonPanel.add(formFlexTable);
 		buttonPanel.add(messageTextLabel); 
+		buttonPanel.add(buttonFlexTable);
+		
+		userIDTextbox.setFocus(true);
 		
 		addUserButton.addClickHandler(new ClickHandler() {
 
@@ -107,25 +110,33 @@ public class AddUserWidget extends VerticalPanel {
 				nu.setRemindDays( Integer.parseInt(userRemindDayTextbox.getText().toString()));
 				
 				//nu.setNewUser(result);				
-				userSvcAsynch.createUser(nu, new AsyncCallback<User>() { 
-					@Override
-					public void onFailure(Throwable caught) {
-					// TODO Auto-generated method stub
-						System.out.println("not adding user " );
-						messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
-						//messageTextLabel.setText("User information is not correct.\n Please check!");
-					//caught.printStackTrace();
-					}
+				try {
+					userSvcAsynch.createUser(nu, new AsyncCallback<User>() { 
+						@Override
+						public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+							System.out.println("not adding user " );
+							messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
+							//messageTextLabel.setText("User information is not correct.\n Please check!");
+						//caught.printStackTrace();
+						}
 
-					@Override
-					public void onSuccess(User result) {
-								
-	  					// check if all fields are filled in
-						System.out.println("adding user " );
-						System.out.println(result);
-						messageTextLabel.setText("Hi " + result.getName()+ "! You are successfully registered.");
-					}
-				});
+						@Override
+						public void onSuccess(User result) {
+									
+							// check if all fields are filled in
+							System.out.println("adding user " );
+							//System.out.println(result);	
+							formFlexTable.setVisible(false);
+							addUserButton.setVisible(false);
+							cancelButton.setText("Close");
+							messageTextLabel.setText("Hi! You are successfully registered.");
+						}
+					});
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	);

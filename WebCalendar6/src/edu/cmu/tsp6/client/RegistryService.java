@@ -10,12 +10,12 @@ public interface RegistryService extends RemoteService  {
 	 * Insert a user. The user must have required data 	 * 
 	 * @param user 
 	 */
-	public void createUser(User user) throws Exception ; 
+	public void createUser(User user) throws Exception  ; 
 	/**
 	 * Update a user profile. The user must have required data 	 * 
 	 * @param user 
 	 */
-	public void updateUser(User user) throws Exception ;
+	//public void updateUser(User user) ;
 	
 	/**
 	 * find the user then return the user information 
