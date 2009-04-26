@@ -8,6 +8,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.google.gwt.user.client.ui.Button;
@@ -21,37 +22,42 @@ import com.google.gwt.user.datepicker.client.DatePicker;
 
 import edu.cmu.tsp6.client.bo.BirthdayEvent;
 import edu.cmu.tsp6.client.bo.User;
+import edu.cmu.tsp6.client.composite.CalendarWidget;
 
 public class AddEditPanelWidget extends VerticalPanel {
 
-	private FlexTable formFlexTable = new FlexTable();
-	private HorizontalPanel buttonPanel = new HorizontalPanel();
-	private Button addEventButton = new Button("Add");
+	FlexTable formFlexTable = new FlexTable();
+	Label msgLabel = new Label();
+	
+	HorizontalPanel buttonPanel = new HorizontalPanel();
+	Button addEventButton = new Button("Add");
 
 	// labels and textboxes
-	private Label ownerNameLabel = new Label("Owner: ");
-	private Label ownerNameValue = new Label();
+	Label ownerNameLabel = new Label("Owner: ");
+	Label ownerNameValue = new Label();
 
-	private Label birthDateLabel = new Label("Date: ");
-	private TextBox birthDateTextbox = new TextBox();
+	Label birthDateLabel = new Label("Date: ");
+	TextBox birthDateTextbox = new TextBox();
 
-	private Label birthdayPersonLabel = new Label("Birthday Person: ");
-	private TextBox birthdayPersonTextBox = new TextBox();
-	private DatePicker datePicker = new DatePicker();
+	Label birthdayPersonLabel = new Label("Birthday Person: ");
+	TextBox birthdayPersonTextBox = new TextBox();
+	DatePicker datePicker = new DatePicker();
 
-	private EventServiceAsync eventSvcAsynch = GWT.create(EventService.class);
+	EventServiceAsync eventSvcAsynch = GWT.create(EventService.class);
 
-	public AddEditPanelWidget(final PopupPanel simplePopup) {
+	public AddEditPanelWidget(final PopupPanel simplePopup, final CalendarWidget c) {
 		super();
 		// Create table for form data.
 		formFlexTable.setWidget(0, 0, ownerNameLabel);
 		formFlexTable.setWidget(0, 1, ownerNameValue);
 		formFlexTable.setWidget(1, 0, birthdayPersonLabel);
 		formFlexTable.setWidget(1, 1, birthdayPersonTextBox);
+//		formFlexTable.setWidget(1, 3, birthdayPersonNameLabel);
 		formFlexTable.setWidget(2, 0, birthDateLabel);
 		formFlexTable.setWidget(2, 1, birthDateTextbox);
 		birthDateTextbox.setReadOnly(true);
 		formFlexTable.setWidget(2, 2, datePicker);
+		formFlexTable.setWidget(3,1, msgLabel);
 		datePicker.setVisible(false);
 		
 		// create an event
@@ -63,12 +69,13 @@ public class AddEditPanelWidget extends VerticalPanel {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-
+				
+				msgLabel.setText(caught.getMessage());
 			}
 
 			@Override
 			public void onSuccess(User result) {
+				msgLabel.setText("");
 				// fake user code
 				if (result == null) {
 					result = new User();
@@ -109,19 +116,19 @@ public class AddEditPanelWidget extends VerticalPanel {
 				System.out.println("add button clicked");
 				
 				// get the Birthday person from the database
-				String birthdayPersonName = birthdayPersonTextBox.getText();
+				final String birthdayPersonName = birthdayPersonTextBox.getText();
 				eventSvcAsynch.getUser(birthdayPersonName,
 						new AsyncCallback<User>() {
 
 							@Override
 							public void onFailure(Throwable caught) {
-								// TODO Auto-generated method stub
+								Window.alert("User " + birthdayPersonName + "  is not valid. Please enter a valid user name");
 
 							}
 
 							@Override
 							public void onSuccess(User result) {
-								System.out.println("adding user " + result);
+								System.out.println("adding  " + result);
 								e.setBirthdayPerson(result);
 								// check if all fields are filled in
 
@@ -132,12 +139,18 @@ public class AddEditPanelWidget extends VerticalPanel {
 											@Override
 											public void onFailure(
 													Throwable caught) {
-
+												
+												Window.alert("User " + e.getBirthdayPerson().getName() + "  already has a birthday in the system. Please remove that birthday event to add a new one.");
 											}
 
 											@Override
 											public void onSuccess(Void result) {
+												msgLabel.setText("Adding succesful");
+												
 												simplePopup.hide(true);
+												if (c!=null) {
+													c.init();
+												}
 											}
 
 										});

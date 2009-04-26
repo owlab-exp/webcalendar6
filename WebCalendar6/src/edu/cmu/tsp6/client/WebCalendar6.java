@@ -32,6 +32,7 @@ import edu.cmu.tsp6.client.composite.MonthChangeListener;
 public class WebCalendar6 implements EntryPoint {
 	private String SCREEN_WIDTH = "100%";
 	private FlexTable flexTable;
+	private CalendarWidget c = new CalendarWidget();
 	private BirthdayEventServiceAsync birthdayEventSvcAsynch = GWT.create(BirthdayEventService.class);
 	
 	/**
@@ -45,7 +46,7 @@ public class WebCalendar6 implements EntryPoint {
 		dock.add(menu, DockPanel.NORTH);
 		dock.setWidth(SCREEN_WIDTH);
 			
-		final CalendarWidget c = new CalendarWidget();
+		
 		dock.add(c, DockPanel.CENTER);
 		
 		ServiceDefTarget endpoint = (ServiceDefTarget) birthdayEventSvcAsynch;
@@ -148,8 +149,9 @@ public class WebCalendar6 implements EntryPoint {
 			PopupPanel simplePopup = new PopupPanel(true);
 			simplePopup.setTitle("Add Event");
 			
-			simplePopup.setWidget(new AddEditPanelWidget(simplePopup));
+			simplePopup.setWidget(new AddEditPanelWidget(simplePopup, c));
 			simplePopup.show();
+			
 		}
 	}
 	

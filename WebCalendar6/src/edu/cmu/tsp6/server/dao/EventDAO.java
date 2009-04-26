@@ -98,9 +98,7 @@ public class EventDAO implements IEventDAO {
 
 		String sql = String
 				.format(
-						"UPDATE EVENT SET EVENT_OWNER_ID = '%s',EVENT_BIRTH_PERSON_ID = '%s',EVENT_DATE='%s' WHERE EVENT_ID='%d'",
-						existingEvent.getOwner().getUserId(), existingEvent
-								.getBirthdayPerson().getUserId(),
+						"UPDATE EVENT SET EVENT_DATE='%s' WHERE EVENT_ID='%d'",
 						getSQLDate(existingEvent.getDate()), existingEvent
 								.getEventId());
 		try {
