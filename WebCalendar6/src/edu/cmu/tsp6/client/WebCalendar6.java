@@ -158,9 +158,10 @@ public class WebCalendar6 implements EntryPoint {
 	class EditProfileCommand implements Command {
 		@Override
 		public void execute() {
-			PopupPanel simplePopup = new PopupPanel(true);
-			simplePopup.setWidget(new HTML("EditProfileCommand"));
-			simplePopup.show();
+			PopupPanel profilePopup = new PopupPanel(true);
+			profilePopup.setTitle("Edit Profile");
+			profilePopup.setWidget(new UpdateUserWidget(profilePopup));
+			profilePopup.show();
 		}
 	}
 	
