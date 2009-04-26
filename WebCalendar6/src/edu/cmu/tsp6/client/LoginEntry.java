@@ -43,6 +43,7 @@ public class LoginEntry implements EntryPoint {
 	private final LoginServiceAsync loginService = GWT.create(LoginService.class);
 
 	private RootPanel mainPanel = null;
+	private RootPanel listPanel = null;
 	/* (non-Javadoc)
 	 * @see com.google.gwt.core.client.EntryPoint#onModuleLoad()
 	 */
@@ -65,7 +66,9 @@ public class LoginEntry implements EntryPoint {
 		// attach this panel to ...
 		RootPanel.get("login").add(loginPanel);
 		mainPanel = RootPanel.get("main");
+		listPanel = RootPanel.get("list");
 		mainPanel.setVisible(false);
+		listPanel.setVisible(false);
 
 		userIdTextBox.setFocus(true);
 		
@@ -122,6 +125,7 @@ public class LoginEntry implements EntryPoint {
 					//loginPanel.setVisible(false);
 					loginPanel.removeFromParent();
 					mainPanel.setVisible(true);
+					listPanel.setVisible(true);
 					
 				}
 			});
