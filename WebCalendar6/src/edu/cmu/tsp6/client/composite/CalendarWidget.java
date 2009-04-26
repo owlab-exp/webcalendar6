@@ -330,22 +330,29 @@ public class CalendarWidget extends Composite {
 				return;
 			
 			for(BirthdayEvent e : events) {
-				Hyperlink h = new Hyperlink(e.getBirthdayPerson().getName(), "AnyBirth");
-				eventsPanel.add(h);
+				
 				final Integer eventId = e.getEventId();
+				
+				final Hyperlink h = new Hyperlink(e.getBirthdayPerson().getName(), "Remove");
+				eventsPanel.add(h);
+				
 				h.addClickHandler(new ClickHandler() {
 					public void onClick(ClickEvent event){
+						System.out.println("Remove Link Clicked");
 						 PopupPanel eventRemovePopup = new PopupPanel(true);
-					     //simplePopup.setWidget(new HTML("EditProfileCommand"));
-						 RemoveEventWidget removeEventWidget = new RemoveEventWidget(eventRemovePopup);
-						 
-						 
+					     RemoveEventWidget removeEventWidget = new RemoveEventWidget(eventRemovePopup, h);
+					     //removeEventWidget.setCallerWidget(h);
 						 removeEventWidget.setEventId(eventId);
-						 
-					     eventRemovePopup.setWidget(removeEventWidget);
+						 eventRemovePopup.setWidget(removeEventWidget);
 					     eventRemovePopup.show();
 					}
+					
+					
 				});
+				
+				
+				
+				
 			}
 		}
 

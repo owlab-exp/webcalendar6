@@ -39,7 +39,7 @@ public class LoginEntry implements EntryPoint {
 	
 	private Hyperlink registerUserLink = new Hyperlink("Register User", "foo");
 	
-	//private Hyperlink removeEventLink = new Hyperlink("Remove Event", "foo");
+	//private Hyperlink removeEventLink = new Hyperlink("[Test]Remove Event", "foo");
 	
 	private Label messageTextLabel = new Label();
 
