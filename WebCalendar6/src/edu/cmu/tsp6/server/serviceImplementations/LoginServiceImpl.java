@@ -46,7 +46,9 @@ public class LoginServiceImpl extends RemoteServiceServlet implements
 			request = this.getThreadLocalRequest();
 			session = request.getSession();
 			// Need revising
-			session.setAttribute("userId", id);
+			session.setAttribute(WebCalendarConstants.ID, id);
+			session.setAttribute(WebCalendarConstants.USER, user);
+			//session.getAttribute("userId");
 			
 			message = "Welcome " + user.getName();
 		} else {
