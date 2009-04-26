@@ -39,7 +39,7 @@ public class LoginEntry implements EntryPoint {
 	
 	private Hyperlink registerUserLink = new Hyperlink("Register User", "foo");
 	
-	private Hyperlink removeEventLink = new Hyperlink("Remove Event", "foo");
+	//private Hyperlink removeEventLink = new Hyperlink("Remove Event", "foo");
 	
 	private Label messageTextLabel = new Label();
 
@@ -64,7 +64,7 @@ public class LoginEntry implements EntryPoint {
 		loginPanel.add(loginSubmitButton);
 		loginPanel.add(registerUserLink);
 		
-		loginPanel.add(removeEventLink);
+		//loginPanel.add(removeEventLink);
 		
 		loginPanel.add(messageTextLabel);
 		
@@ -95,18 +95,18 @@ public class LoginEntry implements EntryPoint {
 			}
 		});
 		
-		removeEventLink.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event){
-				 PopupPanel eventRemovePopup = new PopupPanel(true);
-			     //simplePopup.setWidget(new HTML("EditProfileCommand"));
-				 RemoveEventWidget removeEventWidget = new RemoveEventWidget(eventRemovePopup);
-				 
-				 removeEventWidget.setEventId(new Integer(1));
-				 
-			     eventRemovePopup.setWidget(removeEventWidget);
-			     eventRemovePopup.show();
-			}
-		});
+//		removeEventLink.addClickHandler(new ClickHandler() {
+//			public void onClick(ClickEvent event){
+//				 PopupPanel eventRemovePopup = new PopupPanel(true);
+//			     //simplePopup.setWidget(new HTML("EditProfileCommand"));
+//				 RemoveEventWidget removeEventWidget = new RemoveEventWidget(eventRemovePopup);
+//				 
+//				 removeEventWidget.setEventId(new Integer(1));
+//				 
+//			     eventRemovePopup.setWidget(removeEventWidget);
+//			     eventRemovePopup.show();
+//			}
+//		});
 		
 	}
 	
