@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 
 
@@ -98,7 +99,11 @@ public class LoginEntry implements EntryPoint {
 			public void onClick(ClickEvent event){
 				 PopupPanel eventRemovePopup = new PopupPanel(true);
 			     //simplePopup.setWidget(new HTML("EditProfileCommand"));
-			     eventRemovePopup.setWidget(new RemoveEventWidget(eventRemovePopup));
+				 RemoveEventWidget removeEventWidget = new RemoveEventWidget(eventRemovePopup);
+				 
+				 removeEventWidget.setEventId(new Integer(1));
+				 
+			     eventRemovePopup.setWidget(removeEventWidget);
 			     eventRemovePopup.show();
 			}
 		});
