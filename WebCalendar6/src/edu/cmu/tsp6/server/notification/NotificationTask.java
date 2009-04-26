@@ -32,7 +32,7 @@ public class NotificationTask  extends TimerTask{
 			while(it.hasNext()){
 				NotifyUser nu = it.next();
 				String mailContent = setTemplate(nu.getName(),nu.getDate());
-				sendMail("Birthday Reminder Mail","spark.sean@gmail.com", mailContent); 
+				sendMail("Birthday Reminder Mail",nu.getEmail(), mailContent); 
 				System.out.println("Sent mail to:"+nu.getEmail());
 			}
         }catch(Exception ex){

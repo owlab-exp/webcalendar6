@@ -31,7 +31,16 @@
     <servlet-name>birhtdayEventServlet</servlet-name>
     <url-pattern>/webcalendar6/birthdayEvents</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+		<description>
+		</description>
+		<display-name>
+		InitializeNotifyServlet</display-name>
+		<servlet-name>InitializeNotifyServlet</servlet-name>
+		<servlet-class>
+		edu.cmu.tsp6.server.notification.InitializeNotifyServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+  </servlet>
   <!-- 
 	<servlet>
 		<servlet-name>shell</servlet-name>

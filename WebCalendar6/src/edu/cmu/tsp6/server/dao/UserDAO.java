@@ -192,7 +192,8 @@ public class UserDAO {
 		List<NotifyUser> userList = new ArrayList<NotifyUser>();
 		String sql = "select u.USER_ID, u.USER_EMAIL, (select USER_NAME from USER x where x.USER_ID = e.EVENT_BIRTH_PERSON_ID) USER_NAME, e.EVENT_DATE "
 				+"from USER u, EVENT e "
-				+"where e.EVENT_DATE-u.USER_REMIND_DAYS=curdate()";
+				+"where e.EVENT_DATE-u.USER_REMIND_DAYS=curdate()"
+				+" and u.USER_ID <> e.EVENT_BIRTH_PERSON_ID";
 
 		try {
 			ResultSet rs = DatabaseConnection.getInstance().getStatement().executeQuery(sql);
