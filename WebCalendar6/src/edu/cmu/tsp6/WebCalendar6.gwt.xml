@@ -20,5 +20,6 @@
 	<servlet path="/login" class="edu.cmu.tsp6.server.serviceImplementations.LoginServiceImpl" />
 	
 	<servlet path="/logout" class="edu.cmu.tsp6.server.serviceImplementations.LogoutServiceImpl" />
+	<servlet path="/removeEvent" class="edu.cmu.tsp6.server.serviceImplementations.RemoveEventServiceImpl" />
 	
 </module>
