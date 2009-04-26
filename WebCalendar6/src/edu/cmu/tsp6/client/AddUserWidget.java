@@ -25,7 +25,9 @@ public class AddUserWidget extends VerticalPanel {
 
 	private FlexTable formFlexTable = new FlexTable();
 	private FlexTable buttonFlexTable = new FlexTable();
-	private HorizontalPanel buttonPanel = new HorizontalPanel();	 
+	private FlexTable msgFlexTable = new FlexTable();
+	
+	private HorizontalPanel buttonPanel = new HorizontalPanel();		
 	
 	private Label messageTextLabel = new Label();
 	private Button addUserButton = new Button("Register");
@@ -68,12 +70,13 @@ public class AddUserWidget extends VerticalPanel {
 		formFlexTable.setWidget(4, 1, eMailTextbox);		
 		formFlexTable.setWidget(5, 0, userRemindDayLabel);
 		formFlexTable.setWidget(5, 1, userRemindDayTextbox);
-
-		buttonFlexTable.setWidget(0, 0, addUserButton); 
-		buttonFlexTable.setWidget(0, 1, cancelButton); 
-		 
 		
-		messageTextLabel.setText("");
+		formFlexTable.setWidget(6, 0, messageTextLabel); 
+			
+		buttonFlexTable.setWidget(0, 0, addUserButton); 
+		buttonFlexTable.setWidget(0, 1, cancelButton); 		
+				
+		messageTextLabel.setText(" ");
 		userRemindDayTextbox.setText("0");
 		userIDTextbox.setMaxLength(20);
 		userPasswordTextBox.setMaxLength(20);
@@ -88,10 +91,10 @@ public class AddUserWidget extends VerticalPanel {
 		final NewUser nu = new NewUser();
 		ServiceDefTarget endpoint = (ServiceDefTarget) userSvcAsynch;
 		endpoint.setServiceEntryPoint(GWT.getModuleBaseURL() + "Registration");
-
+		
 		buttonPanel.add(formFlexTable);
-		buttonPanel.add(messageTextLabel); 
-		buttonPanel.add(buttonFlexTable);
+		buttonPanel.add(messageTextLabel);  
+		buttonPanel.add(buttonFlexTable);		 
 		
 		userIDTextbox.setFocus(true);
 		
@@ -116,9 +119,14 @@ public class AddUserWidget extends VerticalPanel {
 						public void onFailure(Throwable caught) {
 						// TODO Auto-generated method stub
 							System.out.println("not adding user " );
-							messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
 							//messageTextLabel.setText("User information is not correct.\n Please check!");
-						//caught.printStackTrace();
+							
+							formFlexTable.setVisible(false);
+							addUserButton.setVisible(false);
+							cancelButton.setText("Close");
+							messageTextLabel.setText("Registration is failed: \n" + caught.getMessage());
+							
+							//caught.printStackTrace();
 						}
 
 						@Override
