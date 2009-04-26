@@ -68,6 +68,7 @@ public class LoginEntry implements EntryPoint {
 		
 		loginPanel.add(messageTextLabel);
 		
+		
 		// attach this panel to ...
 		RootPanel.get("login").add(loginPanel);
 		
@@ -140,8 +141,10 @@ public class LoginEntry implements EntryPoint {
 				}
 				public void onSuccess(String result) {
 					//message has to be sent to another message field
-					messageTextLabel.setText("Welcome " + result);
+					messageTextLabel.setText("");
 					loginSubmitButton.setEnabled(true);
+					userIdTextBox.setText("");
+					userPasswordTextBox.setText("");
 					// Invisible after logged in
 					loginPanel.setVisible(false);
 					//loginPanel.removeFromParent();

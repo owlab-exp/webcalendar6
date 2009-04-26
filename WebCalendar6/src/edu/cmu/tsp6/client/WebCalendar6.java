@@ -178,12 +178,13 @@ public class WebCalendar6 implements EntryPoint {
 					}
 					public void onSuccess(String result) {
 						RootPanel mainPanel = RootPanel.get("main");
+						RootPanel listPanel = RootPanel.get("list");
 						//RootPanel loginPanel = RootPanel.get("login");
 						//message has to be sent to another message field
 						System.out.println("Logout successed");
 						//loginPanel.removeFromParent();
 						mainPanel.setVisible(false);
-						//loginPanel.setVisible(true);
+						listPanel.setVisible(false);
 						
 						Panel loginPanel = Globals.getPanel("loginPanel");
 						///loginPanel.g
