@@ -17,7 +17,7 @@ public class RemoveEventServiceImpl extends RemoteServiceServlet implements
 		RemoveEventService {
 
 	public void removeEventServer(Integer eventId) throws Exception {
-		System.out.println("eventId=" + eventId);
+		System.out.println("eventId=" + eventId + " will be removed.");
 
 		HttpServletRequest request = null;
 		HttpSession session = null;
@@ -26,6 +26,8 @@ public class RemoveEventServiceImpl extends RemoteServiceServlet implements
 		
 		//Event event = ed.getEvent(eventId);
 		ed.deleteEvent(eventId);
+		
+		System.out.println("eventId=" + eventId + " was removed.");
 			
 	}
 }
