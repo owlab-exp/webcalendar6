@@ -150,6 +150,7 @@ public class WebCalendar6 implements EntryPoint {
 			simplePopup.setTitle("Add Event");
 			
 			simplePopup.setWidget(new AddEditPanelWidget(simplePopup, c));
+			simplePopup.center();
 			simplePopup.show();
 			
 		}
