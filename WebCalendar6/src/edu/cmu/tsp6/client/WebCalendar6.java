@@ -162,6 +162,7 @@ public class WebCalendar6 implements EntryPoint {
 			PopupPanel profilePopup = new PopupPanel(true);
 			profilePopup.setTitle("Edit Profile");
 			profilePopup.setWidget(new UpdateUserWidget(profilePopup));
+			profilePopup.center();
 			profilePopup.show();
 		}
 	}
