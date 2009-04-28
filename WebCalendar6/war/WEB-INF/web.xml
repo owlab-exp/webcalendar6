@@ -39,7 +39,7 @@
 		<servlet-name>InitializeNotifyServlet</servlet-name>
 		<servlet-class>
 		edu.cmu.tsp6.server.notification.InitializeNotifyServlet</servlet-class>
-		<load-on-startup>0</load-on-startup>
+		<load-on-startup>1</load-on-startup>
   </servlet>
   <!-- 
 	<servlet>
