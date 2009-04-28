@@ -130,7 +130,7 @@ public class WebCalendar6 implements EntryPoint {
 					BirthdayEvent event = it.next();
 					flexTable.setText(i, 0, event.getDate().toString());
 					flexTable.setText(i, 1, event.getBirthdayPerson().getName());
-					
+					i++;
 				}
 				System.out.println(result);
 			}
