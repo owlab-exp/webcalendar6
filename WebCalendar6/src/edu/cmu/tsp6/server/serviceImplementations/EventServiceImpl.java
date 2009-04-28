@@ -7,12 +7,12 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import edu.cmu.tsp6.client.EventService;
+import edu.cmu.tsp6.client.ServiceException;
 import edu.cmu.tsp6.client.bo.BirthdayEvent;
 import edu.cmu.tsp6.client.bo.Event;
 import edu.cmu.tsp6.client.bo.User;
 import edu.cmu.tsp6.server.dao.EventDAO;
 import edu.cmu.tsp6.server.dao.UserDAO;
-import edu.cmu.tsp6.server.dao.exception.ServiceException;
 import edu.cmu.tsp6.server.dao.exception.EventExistException;
 
 /**

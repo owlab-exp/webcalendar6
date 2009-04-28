@@ -1,7 +1,7 @@
 /**
  * 
  */
-package edu.cmu.tsp6.server.dao.exception;
+package edu.cmu.tsp6.client;
 
 /**
  * @author kaalpurush

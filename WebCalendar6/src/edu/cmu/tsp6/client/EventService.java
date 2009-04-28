@@ -4,7 +4,6 @@ import com.google.gwt.user.client.rpc.RemoteService;
 
 import edu.cmu.tsp6.client.bo.Event;
 import edu.cmu.tsp6.client.bo.User;
-import edu.cmu.tsp6.server.dao.exception.ServiceException;
 
 public interface EventService extends RemoteService {
 	
