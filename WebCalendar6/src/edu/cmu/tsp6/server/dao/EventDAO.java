@@ -213,7 +213,7 @@ public class EventDAO implements IEventDAO {
 		List<BirthdayEvent> events = new ArrayList<BirthdayEvent>();
 
 		//Get All
-		String sql = String.format("SELECT * FROM EVENT");
+		String sql = String.format("SELECT * FROM EVENT order by EVENT_DATE");
 		
 		//Create Date
 
