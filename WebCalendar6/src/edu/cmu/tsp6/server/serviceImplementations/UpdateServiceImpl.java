@@ -49,13 +49,13 @@ public class UpdateServiceImpl extends RemoteServiceServlet implements UpdateSer
 	public void updateUser(User user) throws Exception {
 
 		if (user.getName() == null || user.getName().length()== 0) {
-			throw new NullPointerException("User Name should not be null");
+			throw new NullPointerException("User Name should not be blank");
 		}
 		if (user.getPassword() == null|| user.getPassword().length()== 0) {
-			throw new NullPointerException("Password should not be null");
+			throw new NullPointerException("Password should not be blank");
 		}
 		if (user.getEmail() == null|| user.getEmail().length()== 0) {
-			throw new NullPointerException("User Name should not be null");
+			throw new NullPointerException("User Name should not be blank");
 		}
 		if (user.getRemindDays()<= 0) {
 			throw new NullPointerException("Remind date should be greater than 0");
