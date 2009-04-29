@@ -32,7 +32,7 @@ public class UpdateServiceImpl extends RemoteServiceServlet implements UpdateSer
 	 */
 	
 	@Override
-	public User findUser(String userID) {
+	public User findUser(String userID)  {
 		UserDAO ud = UserDAO.getInstance();
 		return ud.getUser(userID);
 	}
@@ -46,27 +46,27 @@ public class UpdateServiceImpl extends RemoteServiceServlet implements UpdateSer
 	}
 	
 	@Override
-	public void updateUser(User user) {
+	public void updateUser(User user) throws Exception {
 
-		if (user.getName() == null) {
+		if (user.getName() == null || user.getName().length()== 0) {
 			throw new NullPointerException("User Name should not be null");
 		}
-		if (user.getPassword() == null) {
+		if (user.getPassword() == null|| user.getPassword().length()== 0) {
 			throw new NullPointerException("Password should not be null");
 		}
-		if (user.getEmail() == null) {
+		if (user.getEmail() == null|| user.getEmail().length()== 0) {
 			throw new NullPointerException("User Name should not be null");
 		}
-		if (user.getRemindDays()==0) {
-			throw new NullPointerException("User Name should be greater than 0");
+		if (user.getRemindDays()<= 0) {
+			throw new NullPointerException("Remind date should be greater than 0");
 		}
 		
 		UserDAO ud = UserDAO.getInstance();
 		//validate if event with same birthday person
-		
-		if (ud.getUser(user.getUserId())== null) {
-			throw new IllegalStateException("User has not been registered!");
-		}
+//		
+//		if (ud.getUser(user.getUserId())== null) {
+//			throw new IllegalStateException("User has not been registered!");
+//		}
 		// save it using the UserDAO		
 		ud.editUser(user);
 		
