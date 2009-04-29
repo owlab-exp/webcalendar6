@@ -38,16 +38,16 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 		User usr = (User)user;
 		//validate if all the fields are present
 		if (user.getUserId() == null || user.getUserId().length() ==0 ) {
-			throw new NullPointerException("User Id should not be null");
+			throw new NullPointerException("User Id should not be blank");
 		}		
-		if (usr.getName() == null|| user.getName().length() ==0 ) {
-			throw new NullPointerException("User Name should not be null");
+		if (usr.getName().equals(null) || user.getName().trim().length() ==0 ) {
+			throw new NullPointerException("User Name should not be blank");
 		}
 		if (usr.getPassword() == null|| user.getPassword().length() ==0 ) {
-			throw new NullPointerException("Password should not be null");
+			throw new NullPointerException("Password should not be blank");
 		}
 		if (usr.getEmail() == null|| user.getEmail().length() ==0 ) {
-			throw new NullPointerException("User Name should not be null");
+			throw new NullPointerException("User Name should not be blank");
 		}
 		if (usr.getRemindDays()<= 0) {
 			throw new NullPointerException("Remind date should be greater than 0");
