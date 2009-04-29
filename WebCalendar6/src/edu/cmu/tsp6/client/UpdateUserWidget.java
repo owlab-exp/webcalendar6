@@ -27,8 +27,7 @@ public class UpdateUserWidget extends VerticalPanel {
 	
 	// labels and textboxes
 	private Label userIDLabel = new Label("User ID: "); 
-	private TextBox userIDTextbox = new TextBox();
-	private Label msgIDLabel = new Label("(Case sensitive)"); 
+	private TextBox userIDTextbox = new TextBox(); 
 	
 	private Label userNameLabel = new Label("Name: ");
 	private TextBox userNameTextbox = new TextBox();
@@ -55,11 +54,17 @@ public class UpdateUserWidget extends VerticalPanel {
 
 	public UpdateUserWidget(final PopupPanel simplePopup) {
 		super();
-				
+		 
+		
+		userIDTextbox.setMaxLength(20);
+		userNameTextbox.setMaxLength(40);
+		userPasswordTextBox.setMaxLength(10);
+		userPasswordConfirmTextBox.setMaxLength(10);
+		eMailTextbox.setMaxLength(50); 
+		
 		// Create table for form data.
 		formFlexTable.setWidget(0, 0, userIDLabel);
-		formFlexTable.setWidget(0, 1, userIDTextbox);
-		formFlexTable.setWidget(0, 2, msgIDLabel);
+		formFlexTable.setWidget(0, 1, userIDTextbox); 
 		
 		formFlexTable.setWidget(1, 0, userNameLabel);
 		formFlexTable.setWidget(1, 1, userNameTextbox);
@@ -75,7 +80,8 @@ public class UpdateUserWidget extends VerticalPanel {
 		formFlexTable.setWidget(5, 0, userRemindDayLabel);
 		formFlexTable.setWidget(5, 1, userRemindDayTextbox);
 		formFlexTable.setWidget(5, 2, msgRemindDayLabel);
-		 
+
+		
 		//HttpSession session = null;
 		int left = (Window.getClientWidth() - 100) / 3;
         int top = (Window.getClientHeight() - 100) / 3;
