@@ -30,7 +30,7 @@ public class UserDAO {
 		return instance;
 	}
 
-	private boolean isUserExist(String userId) {
+	public boolean isUserExist(String userId) {
 		String sql = String.format("SELECT * FROM USER where USER_ID = '%s'",
 				userId);
 		Statement s = DatabaseConnection.getInstance().getStatement();
