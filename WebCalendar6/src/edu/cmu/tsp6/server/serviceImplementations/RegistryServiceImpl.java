@@ -26,7 +26,6 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 	public static RegistryService getInstance() {
 		return instance;
 	}
-
 	/* (non-Javadoc)
 	 * @see edu.cmu.tsp6.client.RegistryService#createUser(edu.cmu.tsp6.bo.User)
 	 */
@@ -38,32 +37,30 @@ public class RegistryServiceImpl extends RemoteServiceServlet implements Registr
 		}
 		User usr = (User)user;
 		//validate if all the fields are present
-		if (usr.getUserId() == null) {
+		if (user.getUserId() == null || user.getUserId().length() ==0 ) {
 			throw new NullPointerException("User Id should not be null");
-		}
-		
-//		if ( findUser(usr.getUserId()) == null) {
-//			throw new NullPointerException("User Id is already registered");
-//		}
-		
-		if (usr.getName() == null) {
+		}		
+		if (usr.getName() == null|| user.getName().length() ==0 ) {
 			throw new NullPointerException("User Name should not be null");
 		}
-		if (usr.getPassword() == null) {
+		if (usr.getPassword() == null|| user.getPassword().length() ==0 ) {
 			throw new NullPointerException("Password should not be null");
 		}
-		if (usr.getEmail() == null) {
+		if (usr.getEmail() == null|| user.getEmail().length() ==0 ) {
 			throw new NullPointerException("User Name should not be null");
 		}
-		if (usr.getRemindDays()==0) {
-			throw new NullPointerException("User Name should be greater than 0");
-		} 		
+		if (usr.getRemindDays()<= 0) {
+			throw new NullPointerException("Remind date should be greater than 0");
+		}
+		
 		UserDAO ud = UserDAO.getInstance();
 		//validate if event with same birthday person
 		System.out.println(usr.getUserId());
 		 
 		// save it using the UserDAO
-		
+		if (ud.isUserExist(usr.getUserId())){
+			throw new NullPointerException(usr.getUserId() + " is already registered!");
+		}		
 		ud.addUser((User)usr);
 		//test it
 	}
