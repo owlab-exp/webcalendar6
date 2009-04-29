@@ -10,7 +10,7 @@ public interface UpdateService extends RemoteService  {
 	 * Update a user profile. The user must have required data 	 * 
 	 * @param user 
 	 */
-	public void updateUser(User user)  ;
+	public void updateUser(User user) throws Exception  ;
 	
 	/**
 	 * find the user then return the user information 
@@ -19,7 +19,7 @@ public interface UpdateService extends RemoteService  {
 	 * @return null		: when it does not have
 	 * @throws Exception: to notify if any error
 	 */
-	public User findUser(String userId)  throws Exception;
+	public User findUser(String userId)  ;
 	 
 
 	public User getCurrentUser();
