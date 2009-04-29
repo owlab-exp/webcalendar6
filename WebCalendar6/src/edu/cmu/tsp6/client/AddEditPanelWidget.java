@@ -117,6 +117,16 @@ public class AddEditPanelWidget extends VerticalPanel {
 				
 				// get the Birthday person from the database
 				final String birthdayPersonName = birthdayPersonTextBox.getText();
+				if (birthdayPersonName == null || birthdayPersonName.length() <= 0) {
+					Window.alert("Please provide the username of the birthday person.");
+					birthdayPersonTextBox.setFocus(true);
+					return;
+				}
+				if (e.getDate() == null) {
+					Window.alert("Please enter a birth date.");
+					birthDateTextbox.setFocus(true);
+					return;
+				}
 				eventSvcAsynch.getUser(birthdayPersonName,
 						new AsyncCallback<User>() {
 
