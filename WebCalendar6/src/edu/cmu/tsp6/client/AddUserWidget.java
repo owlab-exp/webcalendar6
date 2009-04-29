@@ -90,8 +90,11 @@ public class AddUserWidget extends VerticalPanel {
 		messageTextLabel.setText(" ");
 		userRemindDayTextbox.setText("1");
 		userIDTextbox.setMaxLength(20);
-		userPasswordTextBox.setMaxLength(20);
-		userPasswordConfirmTextBox.setMaxLength(20);
+		userNameTextbox.setMaxLength(40);
+		userPasswordTextBox.setMaxLength(10);
+		userPasswordConfirmTextBox.setMaxLength(10);
+		eMailTextbox.setMaxLength(50); 
+		
 		//
 		 int left = (Window.getClientWidth() - 100) / 3;
          int top = (Window.getClientHeight() - 100) / 3;
@@ -121,8 +124,8 @@ public class AddUserWidget extends VerticalPanel {
 				strPassConf = userPasswordConfirmTextBox.getText();
 				
 				nu.setUserId(userIDTextbox.getText());										
-				nu.setName(userIDTextbox.getText());
-				nu.setEmail(userIDTextbox.getText());
+				nu.setName(userNameTextbox.getText());
+				nu.setEmail(eMailTextbox.getText());
 				nu.setPassword(strPassword);
 				nu.setRemindDays( Integer.parseInt(userRemindDayTextbox.getText().toString()));
 				
