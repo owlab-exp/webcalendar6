@@ -17,14 +17,14 @@ public interface UpdateServiceAsync {
 	 * @param user
 	 * @throws Exception
 	 */
-	void updateUser(User user, AsyncCallback<User> callback) ;
+	void updateUser(User user, AsyncCallback<User> callback)throws Exception  ;
 	
 	/**
 	 * Shows the updated event information
 	 * @param userID : user ID
 	 * @throws Exception
 	 */
-	void findUser(String userID, AsyncCallback<User> callback) throws Exception;
+	void findUser(String userID, AsyncCallback<User> callback)  ;
 	
 	void getCurrentUser(AsyncCallback<User> callback);
 	
