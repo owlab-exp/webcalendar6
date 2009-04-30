@@ -67,7 +67,7 @@ public class WebCalendar6 implements EntryPoint {
 					@Override
 					public void onSuccess(List<BirthdayEvent> result) {
 						c.setEvents(result);
-						
+						initList();
 						System.out.println(result);
 					}
 					
@@ -99,19 +99,30 @@ public class WebCalendar6 implements EntryPoint {
 	 * Shows Upcoming events after the login.
 	 */
 	private void initList(){
-		flexTable = new FlexTable();
-		FlexCellFormatter cellFormatter = flexTable.getFlexCellFormatter();
+		//flexTable.clear();
+		if (flexTable==null){
+			flexTable = new FlexTable();
+			
+		} else {
+			/*
+			int rows = flexTable.getRowCount();
+			System.out.println("rows:"+rows);
+			for(int i=0 ;i<rows;i++){
+				//System.out.println("deleting:"+(i-1));
+				flexTable.removeRow(0);
+			}
+			*/
+			flexTable.removeFromParent();
+			flexTable = new FlexTable();
+		}
+		
+		
 		flexTable.addStyleName("wc-calendarview-flextable");
-
+		
 		flexTable.setWidth("350px"); 
 		flexTable.setCellSpacing(5);
 		flexTable.setCellPadding(3);
-		// Add some text
-	    cellFormatter.setHorizontalAlignment(0, 1,
-	        HasHorizontalAlignment.ALIGN_LEFT);
-	    flexTable.setHTML(0, 0, "Upcoming Events");
-	    cellFormatter.setColSpan(0, 0, 2);
-
+		
 		// Show Upcoming Events List
 		birthdayEventSvcAsynch.getUpcomingBirthdayEvents(new Date(), 1, new AsyncCallback<List<BirthdayEvent>>() {
 		
@@ -124,6 +135,13 @@ public class WebCalendar6 implements EntryPoint {
 			@Override
 			public void onSuccess(List<BirthdayEvent> result) {
 				//int numRows = flexTable.getRowCount();
+				// Add some text
+				FlexCellFormatter cellFormatter = flexTable.getFlexCellFormatter();
+				cellFormatter.setHorizontalAlignment(0, 1,
+			        HasHorizontalAlignment.ALIGN_LEFT);
+			    flexTable.setHTML(0, 0, "Upcoming Events");
+			    cellFormatter.setColSpan(0, 0, 2);
+
 				Iterator<BirthdayEvent> it = result.iterator();
 				int i = 1;
 				while(it.hasNext()){

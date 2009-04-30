@@ -252,7 +252,7 @@ public class CalendarWidget extends Composite {
 	 * @param events
 	 */
 	private void setEvent(int day, List<BirthdayEvent> events) {
-		getCalendarBlock(day).setEvents(events);
+		getCalendarBlock(day).setEvents(events, this);
 	}
 
 	/**
@@ -260,7 +260,7 @@ public class CalendarWidget extends Composite {
 	 */
 	public void clearEvents() {
 		for (int i = 0; i < blocks.size(); i++)
-			blocks.get(i).setEvents(null);
+			blocks.get(i).setEvents(null,this);
 	}
 
 	/**
@@ -286,7 +286,7 @@ public class CalendarWidget extends Composite {
 		// call setEvent()
 		for (Map.Entry<Integer, List<BirthdayEvent>> eventsEntry : eventsMap.entrySet()) {
 			getCalendarBlock(eventsEntry.getKey()).setEvents(
-					eventsEntry.getValue());
+					eventsEntry.getValue(), this);
 		}
 	}
 
@@ -323,7 +323,7 @@ public class CalendarWidget extends Composite {
 		}
 
 		/** Set events list of this block */
-		public void setEvents(List<BirthdayEvent> events) {
+		public void setEvents(List<BirthdayEvent> events, final CalendarWidget c) {
 			clearEvents();
 			
 			if(events == null || events.size() == 0)
@@ -340,7 +340,7 @@ public class CalendarWidget extends Composite {
 					public void onClick(ClickEvent event){
 						System.out.println("Remove Link Clicked");
 						 PopupPanel eventRemovePopup = new PopupPanel(true);
-					     RemoveEventWidget removeEventWidget = new RemoveEventWidget(eventRemovePopup, h);
+					     RemoveEventWidget removeEventWidget = new RemoveEventWidget(eventRemovePopup, h, c);
 					     //removeEventWidget.setCallerWidget(h);
 						 removeEventWidget.setEventId(eventId);
 						 eventRemovePopup.setWidget(removeEventWidget);

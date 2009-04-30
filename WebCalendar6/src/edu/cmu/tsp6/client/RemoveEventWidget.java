@@ -13,6 +13,8 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import edu.cmu.tsp6.client.composite.CalendarWidget;
+
 public class RemoveEventWidget extends VerticalPanel {
 
 	// Value to be used
@@ -31,7 +33,7 @@ public class RemoveEventWidget extends VerticalPanel {
 	// private RemoveEventServiceAsync removeEventService =
 	// GWT.create(RemoveEventService.class);
 
-	public RemoveEventWidget(final PopupPanel simplePopup, final Widget w) {
+	public RemoveEventWidget(final PopupPanel simplePopup, final Widget w, final CalendarWidget c) {
 		super();
 
 		formFlexTable.setWidget(0, 0, removeEventButton);
@@ -96,7 +98,7 @@ public class RemoveEventWidget extends VerticalPanel {
 									// //loginPanel.removeFromParent();
 									// mainPanel.setVisible(true);
 									w.removeFromParent();
-									
+									c.init();
 									removeEventButton.removeFromParent();
 									cancelButton.setText("Close");
 
