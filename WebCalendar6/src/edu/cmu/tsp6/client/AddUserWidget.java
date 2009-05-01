@@ -36,7 +36,9 @@ public class AddUserWidget extends VerticalPanel {
 	// labels and textboxes
 	private Label userIDLabel = new Label("User ID: "); 
 	private TextBox userIDTextbox = new TextBox();
-	private Label msgIDLabel = new Label("(Case sensitive)"); 
+	private Label msgIDLabel = new Label("(Case insensitive)"); 
+	
+	private Label wrnLabel = new Label("(All fields are manadtory!)"); 
 	
 	private Label userNameLabel = new Label("Name: ");
 	private TextBox userNameTextbox = new TextBox();
@@ -63,10 +65,10 @@ public class AddUserWidget extends VerticalPanel {
 		super();
 
 		// Create table for form data.
-		formFlexTable.setWidget(0, 0, userIDLabel);
+		formFlexTable.setWidget(0, 0, userIDLabel); 
 		formFlexTable.setWidget(0, 1, userIDTextbox);
 		formFlexTable.setWidget(0, 2, msgIDLabel);
-		
+
 		formFlexTable.setWidget(1, 0, userNameLabel);
 		formFlexTable.setWidget(1, 1, userNameTextbox);
 		formFlexTable.setWidget(2, 0, userPasswordLabel);
@@ -85,8 +87,9 @@ public class AddUserWidget extends VerticalPanel {
 		formFlexTable.setWidget(6, 0, messageTextLabel); 
 			
 		buttonFlexTable.setWidget(0, 0, addUserButton); 
-		buttonFlexTable.setWidget(0, 1, cancelButton); 		
-						
+		buttonFlexTable.setWidget(0, 1, cancelButton); 	
+		buttonFlexTable.setWidget(0, 2, wrnLabel); 	
+		 
 		messageTextLabel.setText(" ");
 		userRemindDayTextbox.setText("1");
 		userIDTextbox.setMaxLength(20);
@@ -95,7 +98,7 @@ public class AddUserWidget extends VerticalPanel {
 		userPasswordConfirmTextBox.setMaxLength(10);
 		eMailTextbox.setMaxLength(50); 
 		
-		//
+		// 
 		 int left = (Window.getClientWidth() - 100) / 3;
          int top = (Window.getClientHeight() - 100) / 3;
          
@@ -123,23 +126,37 @@ public class AddUserWidget extends VerticalPanel {
 				strPassword = userPasswordTextBox.getText();
 				strPassConf = userPasswordConfirmTextBox.getText();
 				
-				nu.setUserId(userIDTextbox.getText());										
-				nu.setName(userNameTextbox.getText());
-				nu.setEmail(eMailTextbox.getText());
-				nu.setPassword(strPassword);
-				nu.setRemindDays( Integer.parseInt(userRemindDayTextbox.getText().toString()));
 				
-				if(!strPassword.equals(strPassConf) ){
+				if(userIDTextbox.getText()== ""){
+					Window.alert("Fail to register user: \n User ID must be entered!");
+				}
+				else if(userNameTextbox.getText()== ""){
+					Window.alert("Fail to register user: \n User name must be entered!");
+				}
+				else if(strPassword == ""){
+					Window.alert("Fail to register user: \n Password must be entered!");
+				}
+				else if(!strPassword.equals(strPassConf) ){
 					Window.alert("Fail to register user: \n Password must be confirmed!");
 				} else if (!eMailTextbox.getText().contains( "@"))
 				{
-					Window.alert("Fail to register user: \n eMail must be correct!");
+					Window.alert("Fail to register user: \n eMail must be entered correctly !");
+				}else if (userRemindDayTextbox.getText()=="")
+				{
+					Window.alert("Fail to register user: \n Remind days must beentered correctly !");
 				}
 				else
 				{
 					//nu.setNewUser(result);
 					try {
+						nu.setUserId(userIDTextbox.getText());										
+						nu.setName(userNameTextbox.getText());
+						nu.setEmail(eMailTextbox.getText());
+						nu.setPassword(strPassword);
+						nu.setRemindDays( Integer.parseInt(userRemindDayTextbox.getText().toString()));
+						
 						userSvcAsynch.createUser(nu, new AsyncCallback<User>() { 
+						
 							@Override
 							public void onFailure(Throwable caught) {
 							// TODO Auto-generated method stub
