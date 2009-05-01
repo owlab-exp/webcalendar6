@@ -13,11 +13,13 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
+import com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant;
 
 import edu.cmu.tsp6.client.RemoveEventWidget;
 import edu.cmu.tsp6.client.bo.BirthdayEvent;
@@ -25,7 +27,7 @@ import edu.cmu.tsp6.client.bo.Event;
 
 /**
  * The calendar view. The customizable area would be the main calendar view area
- * which consist of 7x5 blocks In each of these block we can set the date and
+ * which consist of 7x6 blocks In each of these block we can set the date and
  * the list of events.
  * 
  * The calendar will be able to add an
@@ -33,13 +35,13 @@ import edu.cmu.tsp6.client.bo.Event;
 public class CalendarWidget extends Composite {
 	public static final String TABLE_STYLE_NAME = "wc-calendarview-flextable";
 
-	private static final String BLOCK_WIDTH = "100px";
-	private static final String TITLE_HEIGHT = "50px";
-	private static final String BLOCK_HEIGHT = "100px";
+	private static final String BLOCK_WIDTH = "90px";
+	private static final String TITLE_HEIGHT = "45px";
+	private static final String BLOCK_HEIGHT = "90px";
 
 	private static final Point POS_PREV = new Point(0, 0);
 	private static final Point POS_TITLE = new Point(0, 1);
-	private static final Point POS_NEXT = new Point(0, 6);
+	private static final Point POS_NEXT = new Point(0, 2);
 
 	List<CalendarBlockWidget> blocks = new ArrayList<CalendarBlockWidget>();
 
@@ -73,9 +75,16 @@ public class CalendarWidget extends Composite {
 		cellFormatter.setHeight(0, 1, TITLE_HEIGHT);
 		cellFormatter.setHorizontalAlignment(0, 1,
 				HasHorizontalAlignment.ALIGN_CENTER);
+		cellFormatter.setHorizontalAlignment(0, 0,
+				HasHorizontalAlignment.ALIGN_CENTER);
+		cellFormatter.setHorizontalAlignment(0, 2,
+				HasHorizontalAlignment.ALIGN_CENTER);
+		
+		cellFormatter.setStyleName(0, 0, "wc-calendarview-firstrow");
+		cellFormatter.setStyleName(0, 2, "wc-calendarview-firstrow");
+		cellFormatter.setStyleName(0, 1, "wc-calendarview-header");
 
 		flexTable.setWidget(POS_TITLE.row, POS_TITLE.col, title);
-
 		flexTable.setWidget(POS_NEXT.row, POS_NEXT.col, next);
 
 		// Prepare second row (Days)
@@ -88,14 +97,15 @@ public class CalendarWidget extends Composite {
 		flexTable.setWidget(1, 5, new Label("Friday"));
 		flexTable.setWidget(1, 6, new Label("Saturday"));
 
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 7; i++) {
 			cellFormatter.setHorizontalAlignment(1, i,
 					HasHorizontalAlignment.ALIGN_CENTER);
 			cellFormatter.setWidth(1, i, BLOCK_WIDTH);
+			cellFormatter.setStyleName(1, i, "wc-calendarview-days");
 		}
 
 		// Prepare row blocks
-		for (int r = 2; r <= 10; r += 2)
+		for (int r = 2; r <= 12; r += 2)
 			for (int c = 0; c <= 6; c++) {
 				cellFormatter.setRowSpan(r, c, 2);
 				cellFormatter.setHeight(r, c, BLOCK_HEIGHT);
@@ -307,6 +317,9 @@ public class CalendarWidget extends Composite {
 			eventsPanel = new VerticalPanel();
 			panel.add(l, DockPanel.NORTH);
 			panel.add(eventsPanel, DockPanel.CENTER);
+			
+			panel.setStyleName("wc-calendar-block");
+			eventsPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
 			
 			// Calls init widget to the wrapped widget
 			initWidget(panel);

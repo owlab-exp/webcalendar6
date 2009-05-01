@@ -30,7 +30,7 @@ import edu.cmu.tsp6.client.composite.MonthChangeListener;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class WebCalendar6 implements EntryPoint {
-	private String SCREEN_WIDTH = "100%";
+	private String SCREEN_WIDTH = "80%";
 	private FlexTable flexTable;
 	private CalendarWidget c = new CalendarWidget();
 	private BirthdayEventServiceAsync birthdayEventSvcAsynch = GWT.create(BirthdayEventService.class);
@@ -48,6 +48,7 @@ public class WebCalendar6 implements EntryPoint {
 			
 		
 		dock.add(c, DockPanel.CENTER);
+		dock.setCellHorizontalAlignment(c, HasHorizontalAlignment.ALIGN_CENTER);
 		
 		ServiceDefTarget endpoint = (ServiceDefTarget) birthdayEventSvcAsynch;
 		endpoint.setServiceEntryPoint(GWT.getModuleBaseURL() + "birthdayEvents");
@@ -67,8 +68,6 @@ public class WebCalendar6 implements EntryPoint {
 					@Override
 					public void onSuccess(List<BirthdayEvent> result) {
 						c.setEvents(result);
-						initList();
-						System.out.println(result);
 					}
 					
 				});
@@ -83,6 +82,8 @@ public class WebCalendar6 implements EntryPoint {
 		
 		RootPanel.get("main").add(dock);
 		initList();
+		
+		dock.setCellHorizontalAlignment(flexTable, HasHorizontalAlignment.ALIGN_CENTER);
 	}
 	
 	private MenuBar createMenuBar() {
@@ -117,11 +118,10 @@ public class WebCalendar6 implements EntryPoint {
 		}
 		
 		
-		flexTable.addStyleName("wc-calendarview-flextable");
+		flexTable.setStyleName("wc-listview");
 		
-		flexTable.setWidth("350px"); 
-		flexTable.setCellSpacing(5);
-		flexTable.setCellPadding(3);
+		flexTable.setCellSpacing(0);
+		flexTable.setCellPadding(4);
 		
 		// Show Upcoming Events List
 		birthdayEventSvcAsynch.getUpcomingBirthdayEvents(new Date(), 1, new AsyncCallback<List<BirthdayEvent>>() {
@@ -137,10 +137,9 @@ public class WebCalendar6 implements EntryPoint {
 				//int numRows = flexTable.getRowCount();
 				// Add some text
 				FlexCellFormatter cellFormatter = flexTable.getFlexCellFormatter();
-				cellFormatter.setHorizontalAlignment(0, 1,
-			        HasHorizontalAlignment.ALIGN_LEFT);
 			    flexTable.setHTML(0, 0, "Upcoming Events");
-			    cellFormatter.setColSpan(0, 0, 2);
+			    cellFormatter.setStyleName(0, 0, "wc-listview-header");
+			    cellFormatter.setColSpan(0, 0, 3);
 
 				Iterator<BirthdayEvent> it = result.iterator();
 				int i = 1;
@@ -148,6 +147,7 @@ public class WebCalendar6 implements EntryPoint {
 					BirthdayEvent event = it.next();
 					flexTable.setText(i, 0, event.getDate().toString());
 					flexTable.setText(i, 1, event.getBirthdayPerson().getName());
+					flexTable.setText(i, 2, "Birthday");
 					i++;
 				}
 				System.out.println(result);

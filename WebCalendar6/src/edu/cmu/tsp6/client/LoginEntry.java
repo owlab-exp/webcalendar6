@@ -32,6 +32,8 @@ public class LoginEntry implements EntryPoint {
 	private TextBox userIdTextBox = new TextBox();
 	private PasswordTextBox userPasswordTextBox = new PasswordTextBox();
 	
+	private Label loginLabel = new Label("User ID");
+	
 	private Label userIdLabel = new Label("User ID");
 	private Label userPasswordLabel = new Label("Password");
 	

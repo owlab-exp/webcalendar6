@@ -15,6 +15,29 @@ h1 {
   font-size: 16pt;
 }
 
+.outer {
+	margin: 5px 10% 5px 10%;
+	border: 1px solid #cccccc;
+}
+
+#login {
+	margin: 10px auto 10px auto;
+}
+
+.header{ 
+position: relative;
+width: 100%;
+height: 5;
+background: #2B2B2B url('images/topbg.gif') repeat-x;
+margin-bottom: 2px;
+}
+
+.header_text {
+font-weight: normal;
+color: #fff;
+font-size: 2em;
+}
+
 /** Most GWT widgets already have a style name defined */
 .gwt-DialogBox {
   width: 400px;
@@ -33,6 +56,49 @@ h1 {
   margin: 15px 6px 6px;
 }
 
-.wc-calendarview-flextable td{
+.wc-calendarview-flextable {
+	border-collapse: collapse;
+}
+
+.wc-calendarview-header {
+	border: 0;
+	color: #000033;
+	text-weight: bold;
+	text-align: center;
+	font-size: 3em;	
+}
+
+.wc-calendarview-firstrow {
+	border: 0;
+}
+
+.wc-calendarview-days {
+	color: white;
+	text-weight: bold;
+	text-align: center;
+	background-color: #000033;
+}
+
+.wc-calendar-block {
 	border: 1px solid black;
+}
+
+.wc-calendar-block td {
+	font-size: 0.7em;
+}
+
+.wc-listview {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+.wc-listview td {
+	border: 1px solid black;
+}
+
+.wc-listview-header {
+	color: white;
+	text-weight: bold;
+	text-align: center;
+	background-color: #000033;
 }
