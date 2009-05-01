@@ -24,7 +24,8 @@ public class UpdateUserWidget extends VerticalPanel {
 	private HorizontalPanel buttonPanel = new HorizontalPanel();
 	private Button addUserButton = new Button("Update");
 	private Button cancelButton = new Button("Cancel");
-	
+
+	private Label wrnLabel = new Label("(All fields are manadtory!)"); 
 	// labels and textboxes
 	private Label userIDLabel = new Label("User ID: "); 
 	private TextBox userIDTextbox = new TextBox(); 
@@ -95,6 +96,7 @@ public class UpdateUserWidget extends VerticalPanel {
 
 		buttonPanel.add(addUserButton);
 		buttonPanel.add(cancelButton);		
+		buttonPanel.add(wrnLabel);		
 		userIDTextbox.setEnabled(false);
 		
 		userSvcAsynch.getCurrentUser(new AsyncCallback<User>() {
@@ -120,9 +122,7 @@ public class UpdateUserWidget extends VerticalPanel {
 				eMailTextbox.setText(result.getEmail());
 				userPasswordTextBox.setText(result.getPassword());
 				userPasswordConfirmTextBox.setText(result.getPassword());				 
-				userRemindDayTextbox.setText(String.valueOf(result.getRemindDays()));
-				
-				
+				userRemindDayTextbox.setText(String.valueOf(result.getRemindDays()));				
 			}
 		});		
 			
@@ -134,22 +134,35 @@ public class UpdateUserWidget extends VerticalPanel {
 				strPassword = userPasswordTextBox.getText();
 				strPassConf = userPasswordConfirmTextBox.getText();
 				
-				nu.setUserId(userIDTextbox.getText());
-				nu.setName(userNameTextbox.getText());
-				nu.setEmail(eMailTextbox.getText());
-				nu.setPassword(strPassword);
-				nu.setRemindDays( Integer.parseInt(userRemindDayTextbox.getText()));
 								
-				if(!strPassword.equals(strPassConf) ){
+				if(userIDTextbox.getText()== ""){
+					Window.alert("Fail to register user: \n User ID must be entered!");
+				}
+				else if(userNameTextbox.getText()== ""){
+					Window.alert("Fail to register user: \n User name must be entered!");
+				}
+				else if(strPassword == ""){
+					Window.alert("Fail to register user: \n Password must be entered!");
+				}
+				else if(!strPassword.equals(strPassConf) ){
 					Window.alert("Fail to register user: \n Password must be confirmed!");
 				} else if (!eMailTextbox.getText().contains( "@"))
 				{
-					Window.alert("Fail to register user: \n eMail must be correct!");
+					Window.alert("Fail to register user: \n eMail must be entered correctly !");
+				}else if (userRemindDayTextbox.getText()=="")
+				{
+					Window.alert("Fail to register user: \n Remind days must beentered correctly !");
 				}
 				else
 				{
 				//nu.setNewUser(result);				
 					try {
+						nu.setUserId(userIDTextbox.getText());
+						nu.setName(userNameTextbox.getText());
+						nu.setEmail(eMailTextbox.getText());
+						nu.setPassword(strPassword);
+						nu.setRemindDays( Integer.parseInt(userRemindDayTextbox.getText()));
+						
 						userSvcAsynch.updateUser(nu, new AsyncCallback<User>() { 
 				
 						@Override
