@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="webcalendar6" basedir="." default="deploy">
+	<property name="webapp.name" value="webcalendar6" />
+	<property name="webapp.dist" value="C:\Temp" />
+	<property name="webapp.war" value="${webapp.name}.war" />
+
+
+	<!-- Configure properties to access the Manager application -->
+	<property name="tomcat.manager.url" value="http://open.owlab.com:8086/manager" />
+	<property name="tomcat.manager.username" value="tsp6" />
+	<property name="tomcat.manager.password" value="tsp6" />
+
+	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" />
+
+
+
+	<target name="deploy" description="Deploy application in Tomcat"
+		depends="makeWar">
+ 
+		<deploy url="${tomcat.manager.url}" username="${tomcat.manager.username}"
+			password="${tomcat.manager.password}" path="/${webapp.name}"
+			war="file:${webapp.dist}/${webapp.war}" update="true" />
+
+		<!-- 
+		<deploy url="${tomcat.manager.url}" username="${tomcat.manager.username}"
+			password="${tomcat.manager.password}" path="/webcalendarnotify"
+			war="file:${webapp.dist}/webcalendarnotify.war" update="true" 
+			/>
+		 -->
+	</target>
+
+	<target name="makeWar" description="Make war">
+		<jar 
+			destfile="${webapp.dist}/${webapp.war}" 
+			basedir="./war"
+			includes="**/*"
+			/>
+	</target>
+</project>
