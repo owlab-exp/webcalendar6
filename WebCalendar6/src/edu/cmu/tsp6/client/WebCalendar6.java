@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
@@ -13,7 +14,6 @@ import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PopupPanel;
@@ -68,6 +68,7 @@ public class WebCalendar6 implements EntryPoint {
 					@Override
 					public void onSuccess(List<BirthdayEvent> result) {
 						c.setEvents(result);
+						initList();
 					}
 					
 				});
@@ -132,6 +133,9 @@ public class WebCalendar6 implements EntryPoint {
 
 			@Override
 			public void onSuccess(List<BirthdayEvent> result) {
+
+				DateTimeFormat dtf = DateTimeFormat.getFormat("yyyy-MM-dd");
+									
 				//int numRows = flexTable.getRowCount();
 				// Add some text
 				FlexCellFormatter cellFormatter = flexTable.getFlexCellFormatter();
@@ -143,7 +147,8 @@ public class WebCalendar6 implements EntryPoint {
 				int i = 1;
 				while(it.hasNext()){
 					BirthdayEvent event = it.next();
-					flexTable.setText(i, 0, event.getDate().toString());
+					//flexTable.setText(i, 0, event.getDate().toString());
+					flexTable.setText(i, 0, dtf.format(event.getDate()));
 					flexTable.setText(i, 1, event.getBirthdayPerson().getName());
 					flexTable.setText(i, 2, "Birthday");
 					i++;

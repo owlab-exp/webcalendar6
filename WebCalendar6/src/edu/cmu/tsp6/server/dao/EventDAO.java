@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -28,12 +29,13 @@ public class EventDAO implements IEventDAO {
 		return instance;
 	}
 
-	private Date getSQLDate(java.util.Date date) {
-		Calendar c = new GregorianCalendar();
-		c.setTimeInMillis(date.getTime());
+	private String getSQLDate(java.util.Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		 String dateString = sdf.format(date);
 
-		return Date.valueOf(c.get(Calendar.YEAR) + "-"
-				+ (c.get(Calendar.MONTH) + 1)  + "-" + c.get(Calendar.DATE));
+//		return Date.valueOf(c.get(Calendar.YEAR) + "-"
+//				+ (c.get(Calendar.MONTH) + 1)  + "-" + c.get(Calendar.DATE));
+		 return dateString;
 	}
 
 	private java.util.Date getUtilDate(java.sql.Date date) {
@@ -155,7 +157,7 @@ public class EventDAO implements IEventDAO {
 					rs.getString("EVENT_OWNER_ID")));
 			event.setBirthdayPerson(UserDAO.getInstance().getUser(
 					rs.getString("EVENT_BIRTH_PERSON_ID")));
-			event.setDate(rs.getDate("EVENT_DATE"));
+			event.setDate(DateUtil.sql2java(rs.getDate("EVENT_DATE")));
 
 			return event;
 
@@ -188,7 +190,7 @@ public class EventDAO implements IEventDAO {
 					rs.getString("EVENT_OWNER_ID")));
 			event.setBirthdayPerson(UserDAO.getInstance().getUser(
 					rs.getString("EVENT_BIRTH_PERSON_ID")));
-			event.setDate(rs.getDate("EVENT_DATE"));
+			event.setDate(DateUtil.sql2java(rs.getDate("EVENT_DATE")));
 
 			return event;
 
@@ -244,7 +246,7 @@ public class EventDAO implements IEventDAO {
 				
 				
 				
-				event.setDate(rs.getDate("EVENT_DATE"));
+				event.setDate(DateUtil.sql2java(rs.getDate("EVENT_DATE")));
 
 				events.add(event);
 			}
