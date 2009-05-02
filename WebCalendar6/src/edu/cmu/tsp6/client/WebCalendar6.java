@@ -82,8 +82,6 @@ public class WebCalendar6 implements EntryPoint {
 		
 		RootPanel.get("main").add(dock);
 		initList();
-		
-		dock.setCellHorizontalAlignment(flexTable, HasHorizontalAlignment.ALIGN_CENTER);
 	}
 	
 	private MenuBar createMenuBar() {
