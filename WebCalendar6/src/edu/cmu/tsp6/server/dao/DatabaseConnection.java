@@ -13,7 +13,7 @@ import java.sql.Statement;
  * @author Varokas
  */
 public class DatabaseConnection {
-	private static final String URL = "jdbc:mysql://open.owlab.com:3306/CALENDARDB";
+	private static final String URL = "jdbc:mysql://open.owlab.com:3306/CALENDARDB?autoReconnect=true";
 	private static final String USERNAME = "tsp6";
 	private static final String PASSWORD = "tsp6";
 	private static final String className = "com.mysql.jdbc.Driver";
